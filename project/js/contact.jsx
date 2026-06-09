@@ -5,7 +5,7 @@
 
 const CAL_URL = "https://calendar.app.google/cvDWxLCAQ9Lv8SHr8";
 const BOOK_URL = "https://webforms.pipedrive.com/f/clTep0VNxXRyL9v4qQAQH1MknN1K5SsbuThJFHcYabdZNS63Ki18JRtYVXQpC4UtRF";
-const HOME = "Erin Pompa.html";
+const HOME = "index.html";
 const openUrl = (url) => () => window.open(url, "_blank", "noopener");
 
 /* ---------- NAV ---------- */
@@ -17,16 +17,22 @@ const NAV = [
 ];
 const ContactNav = () => {
   const [scrolled, setScrolled] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState(false);
   React.useEffect(() => {
     const h = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", h); return () => window.removeEventListener("scroll", h);
   }, []);
+  React.useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
   return (
+    <>
     <header style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
       display: "flex", alignItems: "center", justifyContent: "space-between",
       padding: scrolled ? "12px 40px" : "18px 40px",
-      background: scrolled ? "rgba(15,13,12,0.92)" : "rgba(15,13,12,0.6)",
+      background: menuOpen ? "rgba(15,13,12,0.95)" : scrolled ? "rgba(15,13,12,0.92)" : "rgba(15,13,12,0.6)",
       backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.08)",
       transition: "all .25s cubic-bezier(.2,.8,.2,1)"
     }}>
@@ -45,7 +51,27 @@ const ContactNav = () => {
         ))}
         <Button variant="pink" shape="cutout" size="sm" onClick={openUrl(CAL_URL)}>Book Erin</Button>
       </nav>
+      <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"}>
+        <Icon name={menuOpen ? "x" : "menu"} size={26} color="var(--white)" />
+      </button>
     </header>
+    {menuOpen && (
+      <div className="mobile-menu">
+        {NAV.map(l => (
+          <a key={l.label} href={l.href}
+            target={l.href.startsWith("http") ? "_blank" : undefined}
+            rel="noopener"
+            className={"mobile-menu-link" + (l.label === "Contact" ? " active" : "")}
+            onClick={() => setMenuOpen(false)}>
+            {l.label}
+          </a>
+        ))}
+        <div style={{ marginTop: 32 }}>
+          <Button variant="pink" shape="cutout" size="lg" onClick={() => { window.open(CAL_URL, "_blank", "noopener"); setMenuOpen(false); }}>Book Erin</Button>
+        </div>
+      </div>
+    )}
+    </>
   );
 };
 
@@ -170,7 +196,7 @@ const ContactForm = ({ reason }) => {
           <div style={{ background: "var(--ink)", color: "var(--white)", borderRadius: 20, padding: "30px 30px", marginBottom: 22 }}>
             <div style={{ fontFamily: "var(--font-body)", fontWeight: 800, fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--lime)", marginBottom: 12 }}>A note from Erin</div>
             <p style={{ fontSize: 16, lineHeight: 1.6, color: "var(--fg-on-dark2)", margin: 0 }}>
-              Every message that comes through here is handled personally by me or my incredible assistant Shay, who has been holding things down for two years strong while I'm on the road and managing TruthSpeaks 365. <strong style={{ color: "var(--white)" }}>Responses may take a few days but we promise to get back to you.</strong>
+              Every message that comes through here is handled personally by me or my incredible assistant Shay, who has been holding things down for two years strong while I'm on the road and managing TruthSpeaks 365. <strong style={{ color: "var(--white)" }}>Responses may take a few days, but we promise every message gets the care it deserves.</strong>
             </p>
           </div>
         </Reveal>

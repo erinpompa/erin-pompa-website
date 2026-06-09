@@ -7,43 +7,71 @@
 
 const CAL_URL = "https://calendar.app.google/cvDWxLCAQ9Lv8SHr8";
 const TS_URL = "https://truthspeaks365.com";
-const HOME = "Erin Pompa.html";
+const HOME = "index.html";
 const openUrl = (url) => () => window.open(url, "_blank", "noopener");
 
 /* ---------- NAV ---------- */
 const ABOUT_LINKS = [{ label: "About", href: "About.html" }, { label: "Speaking", href: "Speaking.html" }, { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" }, { label: "Contact", href: "Contact.html" }];
 const AboutNav = () => {
   const [scrolled, setScrolled] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState(false);
   React.useEffect(() => {
     const h = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", h); return () => window.removeEventListener("scroll", h);
   }, []);
+  React.useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
   return (
-    <header style={{
-      position: "fixed", top: 0, left: 0, right: 0, zIndex: 80,
-      display: "flex", alignItems: "center", justifyContent: "space-between",
-      padding: scrolled ? "12px 40px" : "20px 40px",
-      background: scrolled ? "rgba(15,13,12,0.78)" : "transparent",
-      backdropFilter: scrolled ? "blur(12px)" : "none",
-      borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
-      transition: "all .25s cubic-bezier(.2,.8,.2,1)"
-    }}>
-      <a href={HOME} style={{ display: "flex", alignItems: "center", gap: 11, textDecoration: "none" }}>
-        <div style={{ fontFamily: "var(--font-display)", fontWeight: 900, textTransform: "uppercase",
-          letterSpacing: "-0.03em", fontSize: 20, color: "var(--white)", lineHeight: 1 }}>
-          Erin <span style={{ color: "var(--pink)" }}>Pompa</span>
+    <>
+      <header style={{
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 80,
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        padding: scrolled ? "12px 40px" : "20px 40px",
+        background: (scrolled || menuOpen) ? "rgba(15,13,12,0.95)" : "transparent",
+        backdropFilter: (scrolled || menuOpen) ? "blur(12px)" : "none",
+        borderBottom: (scrolled || menuOpen) ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
+        transition: "all .25s cubic-bezier(.2,.8,.2,1)"
+      }}>
+        <a href={HOME} style={{ display: "flex", alignItems: "center", gap: 11, textDecoration: "none" }}>
+          <div style={{ fontFamily: "var(--font-display)", fontWeight: 900, textTransform: "uppercase",
+            letterSpacing: "-0.03em", fontSize: 20, color: "var(--white)", lineHeight: 1 }}>
+            Erin <span style={{ color: "var(--pink)" }}>Pompa</span>
+          </div>
+        </a>
+        <nav className="nav-links" style={{ display: "flex", alignItems: "center", gap: 30 }}>
+          {ABOUT_LINKS.map(l => (
+            <a key={l.label} href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel="noopener" style={{
+              fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em",
+              color: l.label === "About" ? "var(--lime)" : "rgba(255,255,255,0.82)", cursor: "pointer", whiteSpace: "nowrap"
+            }}>{l.label}</a>
+          ))}
+          <Button variant="pink" shape="cutout" size="sm" onClick={openUrl("https://calendar.app.google/cvDWxLCAQ9Lv8SHr8")}>Book Erin</Button>
+        </nav>
+        <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"}>
+          <Icon name={menuOpen ? "x" : "menu"} size={26} color="var(--white)" />
+        </button>
+      </header>
+      {menuOpen && (
+        <div className="mobile-menu">
+          {ABOUT_LINKS.map(l => (
+            <a key={l.label} href={l.href}
+              target={l.href.startsWith("http") ? "_blank" : undefined}
+              rel="noopener"
+              className={"mobile-menu-link" + (l.label === "About" ? " active" : "")}
+              onClick={() => setMenuOpen(false)}
+            >{l.label}</a>
+          ))}
+          <div style={{ marginTop: 36, paddingTop: 8 }}>
+            <Button variant="pink" shape="cutout" size="lg"
+              onClick={() => { window.open(CAL_URL, "_blank", "noopener"); setMenuOpen(false); }}>
+              Book Erin
+            </Button>
+          </div>
         </div>
-      </a>
-      <nav className="nav-links" style={{ display: "flex", alignItems: "center", gap: 30 }}>
-        {ABOUT_LINKS.map(l => (
-          <a key={l.label} href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel="noopener" style={{
-            fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em",
-            color: l.label === "About" ? "var(--lime)" : "rgba(255,255,255,0.82)", cursor: "pointer", whiteSpace: "nowrap"
-          }}>{l.label}</a>
-        ))}
-        <Button variant="pink" shape="cutout" size="sm" onClick={openUrl("https://calendar.app.google/cvDWxLCAQ9Lv8SHr8")}>Book Erin</Button>
-      </nav>
-    </header>
+      )}
+    </>
   );
 };
 

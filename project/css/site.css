@@ -161,6 +161,47 @@ a { text-decoration: none; }
 /* ---- buttons handled inline in React; this just kills default focus jump ---- */
 button { font-family: inherit; }
 
+/* ---- hamburger button (hidden on desktop) ---- */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: var(--white);
+  line-height: 1;
+  flex: none;
+  z-index: 81;
+}
+
+/* ---- mobile nav overlay ---- */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 79;
+  background: var(--ink);
+  padding: 88px 32px 48px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.mobile-menu-link {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(28px, 8vw, 42px);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: block;
+  transition: color .15s ease;
+}
+.mobile-menu-link:hover,
+.mobile-menu-link:focus { color: var(--lime); outline: none; }
+.mobile-menu-link.active { color: var(--lime); }
+
 /* ---- responsive ---- */
 @media (max-width: 920px) {
   .wrap { padding: 0 24px; }
@@ -169,4 +210,5 @@ button { font-family: inherit; }
   .cards-3 { grid-template-columns: 1fr !important; }
   .logos-grid { grid-template-columns: repeat(3, 1fr) !important; }
   .nav-links { display: none !important; }
+  .hamburger { display: flex; align-items: center; justify-content: center; }
 }
