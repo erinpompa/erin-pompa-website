@@ -1,0 +1,172 @@
+/* =====================================================================
+   ERIN POMPA — HOMEPAGE  (arena-dark, performer energy)
+   Builds on colors_and_type.css tokens. Dark/light alternating sections.
+   ===================================================================== */
+
+html, body { margin: 0; padding: 0; }
+body { background: var(--ink); overflow-x: hidden; }
+* { box-sizing: border-box; }
+a { text-decoration: none; }
+::selection { background: var(--lime); color: var(--ink); }
+
+/* ---- shared layout ---- */
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+.section { padding: clamp(72px, 9vw, 132px) 0; position: relative; }
+
+/* ---- the // section label ---- */
+.kicker {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.kicker .slash { color: var(--pink); letter-spacing: 0; font-weight: 900; }
+
+/* ---- full-bleed background video placeholder (hero) ---- */
+.video-bg {
+  position: absolute; inset: 0; overflow: hidden; display: grid; place-items: center;
+  background:
+    radial-gradient(80% 60% at 60% 30%, rgba(255,255,255,0.06), transparent 60%),
+    linear-gradient(135deg, #1c1814, #0d0b0a);
+}
+.video-bg::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; opacity: .3;
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 5px 5px;
+}
+/* YouTube background — always covers the hero (16:9, cropped to fill) */
+.yt-frame, #hero-yt {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw; height: 56.25vw;          /* fill width, derive 16:9 height */
+  min-width: 177.78vh; min-height: 100vh; /* fill height, derive 16:9 width */
+  border: 0; z-index: 0; pointer-events: none;
+}
+.video-bg-hint {
+  position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.42); font-family: var(--font-body); font-weight: 800;
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+}
+.video-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(95deg, rgba(11,9,8,0.94) 0%, rgba(11,9,8,0.78) 40%, rgba(11,9,8,0.5) 72%, rgba(11,9,8,0.62) 100%);
+}
+
+/* ---- spotlight glow behind hero (reads as stage light, not a tech gradient) ---- */
+.spotlight {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.spotlight::before {
+  content: ""; position: absolute;
+  width: 75vw; height: 75vw; max-width: 1100px; max-height: 1100px;
+  top: -28%; left: 50%; transform: translateX(-46%);
+  background: radial-gradient(circle, rgba(255,102,196,0.30) 0%, rgba(255,102,196,0.10) 34%, transparent 62%);
+  filter: blur(8px);
+}
+.spotlight::after {
+  content: ""; position: absolute;
+  width: 50vw; height: 50vw; max-width: 720px; max-height: 720px;
+  bottom: -22%; right: -8%;
+  background: radial-gradient(circle, rgba(193,249,68,0.22) 0%, rgba(193,249,68,0.06) 40%, transparent 66%);
+  filter: blur(6px);
+}
+
+/* faint vertical light beams */
+.beams { position: absolute; inset: 0; pointer-events: none; opacity: 0.5;
+  background:
+    linear-gradient(98deg, transparent 38%, rgba(255,255,255,0.035) 39%, transparent 41%),
+    linear-gradient(92deg, transparent 58%, rgba(255,255,255,0.03) 59%, transparent 61%);
+}
+
+/* film-grain-ish dot texture, very subtle, for the dark poster feel */
+.grain::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.5;
+  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* ---- marquee ---- */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+/* ---- logo wall marquee (Where I serve) ---- */
+@keyframes logoMarquee { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.logo-marquee {
+  position: relative; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+.logo-marquee-track {
+  display: flex; align-items: center; gap: 60px; width: max-content;
+  animation: logoMarquee 150s linear infinite;
+  padding: 10px 0;
+}
+.logo-marquee:hover .logo-marquee-track { animation-play-state: paused; }
+.logo-tile {
+  flex: 0 0 auto; display: grid; place-items: center; height: 64px;
+}
+.logo-tile img {
+  max-height: 64px; max-width: 180px; width: auto; object-fit: contain; display: block;
+  transition: transform .25s cubic-bezier(.2,.8,.2,1), filter .25s ease;
+}
+.logo-tile img:hover { transform: scale(1.07); }
+@media (prefers-reduced-motion: reduce) { .logo-marquee-track { animation: none; } }
+@media (max-width: 920px) {
+  .logo-marquee-track { gap: 40px; }
+  .logo-tile { height: 50px; }
+  .logo-tile img { max-height: 50px; max-width: 140px; }
+}
+
+/* ---- entrance reveal ----
+   Transform-only (never opacity): even if the animation timeline is frozen,
+   content stays fully visible — it just sits a few px lower. Real browsers
+   animate the slide-up. This avoids any chance of invisible content. ---- */
+@keyframes rise { from { transform: translateY(24px); } to { transform: none; } }
+.reveal { transform: translateY(24px); }
+.reveal.in { animation: rise .62s cubic-bezier(.2,.8,.2,1) forwards; }
+.reveal.d1.in { animation-delay: .06s; }
+.reveal.d2.in { animation-delay: .12s; }
+.reveal.d3.in { animation-delay: .18s; }
+.reveal.d4.in { animation-delay: .24s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.in { transform: none !important; animation: none !important; }
+  .marquee-track { animation: none; }
+}
+
+/* ---- photo placeholder (stage-shot stand-in) ---- */
+.photo {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(255,255,255,0.10), transparent 60%),
+    linear-gradient(160deg, var(--ink-800), var(--ink-900));
+  border: 2px solid rgba(255,255,255,0.12);
+  display: grid; place-items: center;
+}
+.photo.on-light { border-color: var(--ink); }
+.photo .ph-label {
+  position: relative; z-index: 2; text-align: center;
+  font-family: var(--font-body); font-weight: 800; font-size: 13px;
+  letter-spacing: 0.04em; color: rgba(255,255,255,0.55);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.photo .ph-streak { position: absolute; inset: 0; opacity: .5;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,102,196,0.18) 48%, transparent 60%); }
+
+/* ---- buttons handled inline in React; this just kills default focus jump ---- */
+button { font-family: inherit; }
+
+/* ---- responsive ---- */
+@media (max-width: 920px) {
+  .wrap { padding: 0 24px; }
+  .grid-2 { grid-template-columns: 1fr !important; }
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .cards-3 { grid-template-columns: 1fr !important; }
+  .logos-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  .nav-links { display: none !important; }
+}

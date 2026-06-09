@@ -1,0 +1,236 @@
+/* =====================================================================
+   ERIN POMPA / TRUTHSPEAKS 365 — COLORS & TYPE
+   Foundation tokens for the brand. Import this anywhere:
+     <link rel="stylesheet" href="colors_and_type.css">
+   Fonts load from Google Fonts (see README — flagged substitution).
+   ===================================================================== */
+
+/* ----- FONTS (Google Fonts CDN) ----------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap');
+
+:root {
+  /* ===================================================================
+     COLOR — RAW PALETTE
+     The 8 brand colors, straight from the swatch sheet.
+     Bright, bold, vibrant. Nothing muted. Black anchors it all.
+     =================================================================== */
+  --violet:   #cb6ce6;  /* electric lilac    */
+  --pink:     #ff66c4;  /* hot pink — the signature */
+  --lime:     #c1f944;  /* highlighter lime  */
+  --yellow:   #ffde59;  /* sunshine          */
+  --coral:    #ff507f;  /* punchy rose-coral */
+  --sky:      #38b6ff;  /* electric sky blue */
+  --ink:      #161413;  /* near-black, warm  */
+  --white:    #ffffff;
+
+  /* ===================================================================
+     COLOR — TINTS / SHADES (derived, for surfaces & hovers)
+     Use these for soft fills, hover darkening, borders.
+     =================================================================== */
+  --ink-900:  #161413;
+  --ink-800:  #2a2724;
+  --ink-700:  #44403b;
+  --ink-500:  #6f6a63;   /* muted body text on light */
+  --ink-300:  #b6b1a8;   /* hairline / disabled       */
+  --ink-100:  #e9e6e0;   /* light divider             */
+  --paper:    #fbf7f0;   /* warm off-white background  */
+  --paper-2:  #f4eee4;   /* slightly deeper warm panel */
+
+  --pink-dark:   #f23bab;  /* pink hover/pressed */
+  --lime-dark:   #a6e018;  /* lime hover         */
+  --violet-dark: #b94fd6;  /* violet hover       */
+  --sky-dark:    #1fa0f0;  /* sky hover          */
+  --coral-dark:  #f5366a;  /* coral hover        */
+
+  --pink-soft:   #ffe1f3;  /* soft pink fill  */
+  --lime-soft:   #effbc9;  /* soft lime fill  */
+  --violet-soft: #f3e2fa;  /* soft violet fill */
+  --yellow-soft: #fff5cf;  /* soft yellow fill */
+  --sky-soft:    #dcf1ff;  /* soft sky fill   */
+
+  /* ===================================================================
+     COLOR — SEMANTIC
+     =================================================================== */
+  --bg:            var(--paper);    /* default page background  */
+  --bg-dark:       var(--ink);      /* hero / poster background */
+  --surface:       var(--white);    /* cards on light bg        */
+  --surface-dark:  #211e1b;         /* cards on dark bg         */
+
+  --fg1:           var(--ink);      /* primary text on light    */
+  --fg2:           var(--ink-500);  /* secondary text on light  */
+  --fg-on-dark1:   var(--white);    /* primary text on dark     */
+  --fg-on-dark2:   #c9c3ba;         /* secondary text on dark   */
+
+  --primary:       var(--pink);     /* primary action color     */
+  --primary-dark:  var(--pink-dark);
+  --primary-fg:    var(--ink);      /* text on primary fills    */
+
+  --accent:        var(--lime);     /* energy accent / highlight */
+  --link:          var(--violet-dark);
+
+  --border:        var(--ink-100);
+  --border-strong: var(--ink);
+
+  /* ===================================================================
+     TYPE — FAMILIES
+     Display = Archivo (heavy, confident grotesque)
+     Body    = Hanken Grotesk (warm humanist)
+     Script  = Caveat (handwritten warmth — accents only)
+     =================================================================== */
+  --font-display: 'Archivo', system-ui, sans-serif;
+  --font-body:    'Hanken Grotesk', system-ui, sans-serif;
+  --font-script:  'Caveat', 'Hanken Grotesk', cursive;
+
+  /* ===================================================================
+     TYPE — SCALE  (display sizes assume large surfaces)
+     =================================================================== */
+  --text-xs:   0.8125rem;  /* 13px — labels, captions */
+  --text-sm:   0.9375rem;  /* 15px — fine print       */
+  --text-base: 1.0625rem;  /* 17px — body             */
+  --text-lg:   1.25rem;    /* 20px — lead body        */
+  --text-xl:   1.625rem;   /* 26px — h4               */
+  --text-2xl:  2.125rem;   /* 34px — h3               */
+  --text-3xl:  3rem;       /* 48px — h2               */
+  --text-4xl:  4.25rem;    /* 68px — h1               */
+  --text-5xl:  6rem;       /* 96px — hero impact      */
+
+  --leading-tight:  1.02;
+  --leading-snug:   1.15;
+  --leading-normal: 1.55;
+
+  --tracking-tight: -0.03em;
+  --tracking-flat:  -0.01em;
+  --tracking-wide:  0.16em;   /* eyebrow labels */
+
+  /* ===================================================================
+     SPACING  (8px base rhythm)
+     =================================================================== */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* ===================================================================
+     RADIUS  (soft, friendly, generous — never sharp)
+     =================================================================== */
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   24px;
+  --radius-xl:   36px;
+  --radius-pill: 999px;
+
+  /* ===================================================================
+     SHADOWS  (soft elevation + a signature "hard" offset shadow)
+     =================================================================== */
+  --shadow-sm:  0 1px 2px rgba(22,20,19,0.08);
+  --shadow-md:  0 8px 24px rgba(22,20,19,0.10);
+  --shadow-lg:  0 24px 60px rgba(22,20,19,0.16);
+  /* signature playful "sticker" shadow — hard offset, no blur */
+  --shadow-hard:      6px 6px 0 var(--ink);
+  --shadow-hard-pink: 6px 6px 0 var(--pink);
+  --shadow-hard-lime: 6px 6px 0 var(--lime);
+}
+
+/* =====================================================================
+   SEMANTIC ELEMENT STYLES
+   Bring brand type defaults to bare HTML. Scope as needed.
+   ===================================================================== */
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--fg1);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-3xl);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-2xl);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-flat);
+  margin: 0;
+}
+
+h4, .h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  margin: 0;
+}
+
+p, .body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  margin: 0 0 1em;
+  text-wrap: pretty;
+}
+
+.lead {
+  font-size: var(--text-lg);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* Eyebrow / kicker label — wide-tracked all-caps */
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+/* Handwritten accent — for warm personal moments ("baby", "you hear me?") */
+.script {
+  font-family: var(--font-script);
+  font-weight: 600;
+  font-size: 1.6em;
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Signature highlighter swipe behind a word */
+.hl {
+  background-image: linear-gradient(transparent 8%, var(--lime) 8%, var(--lime) 88%, transparent 88%);
+  padding: 0 0.12em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.hl-pink   { background-image: linear-gradient(transparent 8%, var(--pink) 8%, var(--pink) 88%, transparent 88%); }
+.hl-yellow { background-image: linear-gradient(transparent 8%, var(--yellow) 8%, var(--yellow) 88%, transparent 88%); }
+.hl-violet { background-image: linear-gradient(transparent 8%, var(--violet) 8%, var(--violet) 88%, transparent 88%); }
+
+a, .link { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
+small, .caption { font-size: var(--text-sm); color: var(--fg2); }
+code, .mono { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.9em; }
