@@ -45,7 +45,7 @@ const SpeakingNav = () => {
       </a>
       <nav className="nav-links" style={{ display: "flex", alignItems: "center", gap: 30 }}>
         <a href="About.html" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>About</a>
-        <a href="Speaking.html" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "var(--lime)", whiteSpace: "nowrap" }}>Speaking</a>
+        <a href="Speaking.html" aria-current="page" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "var(--lime)", whiteSpace: "nowrap" }}>Speaking</a>
         <a href="https://truthspeaks365.com" target="_blank" rel="noopener" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>TruthSpeaks 365</a>
         <a href="Contact.html" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>Contact</a>
         <Button variant="pink" shape="cutout" size="sm" onClick={openUrl(CAL_URL)}>Book Erin</Button>
@@ -55,11 +55,12 @@ const SpeakingNav = () => {
       </button>
     </header>
     {menuOpen && (
-      <div className="mobile-menu">
+      <div className="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
         {NAV_LINKS.map(l => (
           <a key={l.label} href={l.href}
             target={l.href.startsWith("http") ? "_blank" : undefined}
             rel="noopener"
+            aria-current={l.label === "Speaking" ? "page" : undefined}
             className={"mobile-menu-link" + (l.label === "Speaking" ? " active" : "")}
             onClick={() => setMenuOpen(false)}>
             {l.label}
@@ -232,11 +233,12 @@ const SpeakingBody = () => {
   return (
     <section className="section" style={{ background: "var(--ink)", color: "var(--white)", paddingTop: 56 }}>
       <div className="wrap" style={{ marginBottom: 48 }}>
-        <div style={{ display: "inline-flex", flexWrap: "wrap", gap: 6, background: "rgba(255,255,255,0.06)", border: "2px solid rgba(255,255,255,0.18)", borderRadius: 999, padding: 6 }}>
+        <div role="tablist" aria-label="Select audience" style={{ display: "inline-flex", flexWrap: "wrap", gap: 6, background: "rgba(255,255,255,0.06)", border: "2px solid rgba(255,255,255,0.18)", borderRadius: 999, padding: 6 }}>
           {Object.values(AUDIENCES).map(a => {
             const active = a.key === tab;
             return (
-              <button key={a.key} onClick={() => setTab(a.key)}
+              <button key={a.key} role="tab" aria-selected={active} aria-controls={"tabpanel-" + a.key} id={"tab-" + a.key}
+                onClick={() => setTab(a.key)}
                 style={{ fontFamily: "var(--font-body)", fontWeight: 800, fontSize: 15, letterSpacing: "0.02em",
                   padding: "12px 26px", borderRadius: 999, border: "none", cursor: "pointer", whiteSpace: "nowrap",
                   background: active ? "var(--lime)" : "transparent", color: active ? "var(--ink)" : "rgba(255,255,255,0.7)",
@@ -247,7 +249,9 @@ const SpeakingBody = () => {
           })}
         </div>
       </div>
-      <AudienceView key={tab} data={data} />
+      <div role="tabpanel" id={"tabpanel-" + tab} aria-labelledby={"tab-" + tab}>
+        <AudienceView key={tab} data={data} />
+      </div>
     </section>
   );
 };
@@ -263,8 +267,8 @@ const SpeakingFooter = () => (
         <div style={{ fontFamily: "var(--font-script)", fontWeight: 600, fontSize: 23, color: "var(--lime)", marginTop: 2 }}>the shift starts here.</div>
       </a>
       <div style={{ display: "flex", gap: 12 }}>
-        {[{ n: "instagram", h: "https://www.instagram.com/erinpspeaks/" }, { n: "linkedin", h: "https://www.linkedin.com/in/erinpompa/" }, { n: "youtube", h: "https://www.youtube.com/@ErinPompa-gg3ds" }].map(s => (
-          <a key={s.h} href={s.h} target="_blank" rel="noopener" style={{ width: 46, height: 46, borderRadius: 999, border: "1px solid rgba(255,255,255,0.25)", display: "grid", placeItems: "center", textDecoration: "none", color: "var(--white)" }}><SocialIcon name={s.n} size={19} /></a>
+        {[{ n: "instagram", h: "https://www.instagram.com/erinpspeaks/", l: "Instagram" }, { n: "linkedin", h: "https://www.linkedin.com/in/erinpompa/", l: "LinkedIn" }, { n: "youtube", h: "https://www.youtube.com/@ErinPompa-gg3ds", l: "YouTube" }].map(s => (
+          <a key={s.h} href={s.h} target="_blank" rel="noopener" aria-label={"Erin on " + s.l} style={{ width: 46, height: 46, borderRadius: 999, border: "1px solid rgba(255,255,255,0.25)", display: "grid", placeItems: "center", textDecoration: "none", color: "var(--white)" }}><SocialIcon name={s.n} size={19} /></a>
         ))}
       </div>
     </div>

@@ -161,6 +161,15 @@ a { text-decoration: none; }
 /* ---- buttons handled inline in React; this just kills default focus jump ---- */
 button { font-family: inherit; }
 
+/* ---- global keyboard focus ring (visible only on keyboard nav, not mouse click) ---- */
+*:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 3px;
+}
+/* pause scrolling marquee when keyboard focus lands inside it */
+.marquee:focus-within .marquee-track { animation-play-state: paused; }
+.logo-marquee:focus-within .logo-marquee-track { animation-play-state: paused; }
+
 /* ---- hamburger button (hidden on desktop) ---- */
 .hamburger {
   display: none;
@@ -198,8 +207,8 @@ button { font-family: inherit; }
   display: block;
   transition: color .15s ease;
 }
-.mobile-menu-link:hover,
-.mobile-menu-link:focus { color: var(--lime); outline: none; }
+.mobile-menu-link:hover { color: var(--lime); }
+.mobile-menu-link:focus-visible { color: var(--lime); outline: 3px solid var(--pink); outline-offset: -2px; }
 .mobile-menu-link.active { color: var(--lime); }
 
 /* ---- responsive ---- */

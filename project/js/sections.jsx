@@ -40,13 +40,14 @@ const Nav = () => {
         borderBottom: (scrolled || menuOpen) ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
         transition: "all .25s cubic-bezier(.2,.8,.2,1)"
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 11, cursor: "pointer" }}
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+        <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Scroll to top"
+          style={{ display: "flex", alignItems: "center", gap: 11, cursor: "pointer", background: "none", border: "none", padding: 0 }}>
           <div style={{ fontFamily: "var(--font-display)", fontWeight: 900, textTransform: "uppercase",
             letterSpacing: "-0.03em", fontSize: 20, color: "var(--white)", lineHeight: 1 }}>
             Erin <span style={{ color: "var(--pink)" }}>Pompa</span>
           </div>
-        </div>
+        </button>
         <nav className="nav-links" style={{ display: "flex", alignItems: "center", gap: 30 }}>
           {NAV_LINKS.map(l => (
             <a key={l.label} href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel="noopener" style={{
@@ -61,7 +62,7 @@ const Nav = () => {
         </button>
       </header>
       {menuOpen && (
-        <div className="mobile-menu">
+        <div className="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
           {NAV_LINKS.map(l => (
             <a key={l.label} href={l.href}
               target={l.href.startsWith("http") ? "_blank" : undefined}
@@ -97,6 +98,8 @@ const Hero = () => {
           onReady: (e) => {
             const p = e.target;
             p.mute(); p.playVideo();
+            // Remove decorative iframe from tab order
+            try { p.getIframe().setAttribute("tabindex", "-1"); } catch (err) {}
             // Seamless loop: restart just before the end so YouTube's end card never shows.
             clearInterval(watchdog);
             watchdog = setInterval(() => {
@@ -130,8 +133,8 @@ const Hero = () => {
   return (
   <section style={{ background: "var(--ink)", color: "var(--white)", position: "relative",
     minHeight: "100vh", display: "flex", alignItems: "center", paddingTop: 120, paddingBottom: 96, overflow: "hidden" }}>
-    {/* full-bleed background video (YouTube IFrame API) */}
-    <div className="video-bg">
+    {/* full-bleed background video (YouTube IFrame API) — decorative, hidden from a11y tree */}
+    <div className="video-bg" aria-hidden="true">
       <div id="hero-yt" className="yt-frame"></div>
     </div>
     <div className="video-scrim"></div>
@@ -613,8 +616,8 @@ const Footer = () => (
         </div>
       </div>
       <div style={{ display: "flex", gap: 12 }}>
-        {[{ n: "instagram", h: "https://www.instagram.com/erinpspeaks/" }, { n: "linkedin", h: "https://www.linkedin.com/in/erinpompa/" }, { n: "youtube", h: "https://www.youtube.com/@ErinPompa-gg3ds" }].map(s => (
-          <a key={s.h} href={s.h} target="_blank" rel="noopener" style={{ width: 46, height: 46, borderRadius: 999,
+        {[{ n: "instagram", h: "https://www.instagram.com/erinpspeaks/", l: "Instagram" }, { n: "linkedin", h: "https://www.linkedin.com/in/erinpompa/", l: "LinkedIn" }, { n: "youtube", h: "https://www.youtube.com/@ErinPompa-gg3ds", l: "YouTube" }].map(s => (
+          <a key={s.h} href={s.h} target="_blank" rel="noopener" aria-label={"Erin on " + s.l} style={{ width: 46, height: 46, borderRadius: 999,
             border: "1px solid rgba(255,255,255,0.25)", display: "grid", placeItems: "center", textDecoration: "none", color: "var(--white)" }}><SocialIcon name={s.n} size={19} /></a>
         ))}
       </div>

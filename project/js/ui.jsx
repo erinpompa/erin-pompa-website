@@ -4,7 +4,7 @@
    ===================================================================== */
 
 const Icon = ({ name, size = 20, color = "currentColor", style = {} }) => (
-  <i data-lucide={name} style={{ width: size, height: size, color, display: "inline-flex", ...style }}></i>
+  <i data-lucide={name} aria-hidden="true" style={{ width: size, height: size, color, display: "inline-flex", ...style }}></i>
 );
 
 // Re-run lucide whenever icons mount
@@ -168,7 +168,7 @@ const Reveal = ({ children, delay = 0, as = "div", className = "", style = {}, .
 
 // Marquee strip
 const Marquee = ({ items, bg = "var(--lime)", color = "var(--ink)" }) => (
-  <div className="marquee" style={{ background: bg, overflow: "hidden", padding: "16px 0",
+  <div className="marquee" aria-hidden="true" style={{ background: bg, overflow: "hidden", padding: "16px 0",
     borderTop: "2px solid var(--ink)", borderBottom: "2px solid var(--ink)" }}>
     <div className="marquee-track">
       {[...items, ...items].map((t, i) => (

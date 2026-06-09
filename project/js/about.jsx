@@ -42,10 +42,12 @@ const AboutNav = () => {
         </a>
         <nav className="nav-links" style={{ display: "flex", alignItems: "center", gap: 30 }}>
           {ABOUT_LINKS.map(l => (
-            <a key={l.label} href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel="noopener" style={{
-              fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em",
-              color: l.label === "About" ? "var(--lime)" : "rgba(255,255,255,0.82)", cursor: "pointer", whiteSpace: "nowrap"
-            }}>{l.label}</a>
+            <a key={l.label} href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel="noopener"
+              aria-current={l.label === "About" ? "page" : undefined}
+              style={{
+                fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em",
+                color: l.label === "About" ? "var(--lime)" : "rgba(255,255,255,0.82)", cursor: "pointer", whiteSpace: "nowrap"
+              }}>{l.label}</a>
           ))}
           <Button variant="pink" shape="cutout" size="sm" onClick={openUrl("https://calendar.app.google/cvDWxLCAQ9Lv8SHr8")}>Book Erin</Button>
         </nav>
@@ -54,11 +56,12 @@ const AboutNav = () => {
         </button>
       </header>
       {menuOpen && (
-        <div className="mobile-menu">
+        <div className="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
           {ABOUT_LINKS.map(l => (
             <a key={l.label} href={l.href}
               target={l.href.startsWith("http") ? "_blank" : undefined}
               rel="noopener"
+              aria-current={l.label === "About" ? "page" : undefined}
               className={"mobile-menu-link" + (l.label === "About" ? " active" : "")}
               onClick={() => setMenuOpen(false)}
             >{l.label}</a>
@@ -90,6 +93,7 @@ const AboutHero = () => {
           onReady: (e) => {
             const p = e.target;
             p.mute(); p.playVideo();
+            try { p.getIframe().setAttribute("tabindex", "-1"); } catch (err) {}
             clearInterval(watchdog);
             watchdog = setInterval(() => {
               try {
@@ -121,7 +125,7 @@ const AboutHero = () => {
   return (
   <section style={{ background: "var(--ink)", color: "var(--white)", position: "relative",
     minHeight: "82vh", display: "flex", alignItems: "center", paddingTop: 130, paddingBottom: 80, overflow: "hidden" }}>
-    <div className="video-bg">
+    <div className="video-bg" aria-hidden="true">
       <div id="about-yt" className="yt-frame"></div>
     </div>
     <div className="video-scrim"></div>
@@ -385,8 +389,8 @@ const AboutFooter = () => (
         </div>
       </a>
       <div style={{ display: "flex", gap: 12 }}>
-        {[{ n: "instagram", h: "https://www.instagram.com/erinpspeaks/" }, { n: "linkedin", h: "https://www.linkedin.com/in/erinpompa/" }, { n: "youtube", h: "https://www.youtube.com/@ErinPompa-gg3ds" }].map(s => (
-          <a key={s.h} href={s.h} target="_blank" rel="noopener" style={{ width: 46, height: 46, borderRadius: 999, border: "1px solid rgba(255,255,255,0.25)", display: "grid", placeItems: "center", textDecoration: "none", color: "var(--white)" }}><SocialIcon name={s.n} size={19} /></a>
+        {[{ n: "instagram", h: "https://www.instagram.com/erinpspeaks/", l: "Instagram" }, { n: "linkedin", h: "https://www.linkedin.com/in/erinpompa/", l: "LinkedIn" }, { n: "youtube", h: "https://www.youtube.com/@ErinPompa-gg3ds", l: "YouTube" }].map(s => (
+          <a key={s.h} href={s.h} target="_blank" rel="noopener" aria-label={"Erin on " + s.l} style={{ width: 46, height: 46, borderRadius: 999, border: "1px solid rgba(255,255,255,0.25)", display: "grid", placeItems: "center", textDecoration: "none", color: "var(--white)" }}><SocialIcon name={s.n} size={19} /></a>
         ))}
       </div>
     </div>
