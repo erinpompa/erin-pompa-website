@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Erin Pompa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Hanken+Grotesk:wght@500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --pink: #ff66c4; --lime: #c1f944; --sky: #38b6ff; --ink: #161413; }
+    html, body { height: 100%; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Hanken Grotesk', system-ui, sans-serif; background: var(--ink); color: #fff; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 48px 20px 44px; position: relative; overflow-x: hidden; }
+    .video-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; background: linear-gradient(160deg, #2a1a24 0%, #0f0d0c 60%); }
+    .yt-wrap { position: absolute; top: 50%; left: 50%; width: max(100vw, 177.78vh); height: max(100vh, 56.25vw); transform: translate(-50%, -50%); }
+    #hero-yt { width: 100%; height: 100%; }
+    .scrim { position: fixed; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(22,20,19,0.70) 0%, rgba(22,20,19,0.55) 45%, rgba(22,20,19,0.75) 100%); }
+    .container { position: relative; z-index: 2; width: 100%; max-width: 400px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .name { font-family: 'Archivo', system-ui, sans-serif; font-weight: 900; font-size: 88px; line-height: 0.86; text-transform: uppercase; letter-spacing: -0.045em; color: #fff; margin-bottom: 16px; }
+    .tagline { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px; }
+    .tagline span { font-family: 'Archivo', system-ui, sans-serif; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; }
+    .slash { color: var(--pink); font-weight: 900; font-size: 18px; }
+    .headline { font-family: 'Archivo', system-ui, sans-serif; font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em; font-size: 34px; line-height: 0.98; margin-bottom: 12px; }
+    .hl { background-image: linear-gradient(transparent 10%, var(--lime) 10%, var(--lime) 86%, transparent 86%); color: var(--ink); padding: 0 0.08em; }
+    .subtext { font-size: 17px; font-weight: 500; line-height: 1.5; color: rgba(255,255,255,0.9); margin-bottom: 32px; }
+    .script { font-family: 'Caveat', cursive; font-weight: 700; font-size: 1.75em; line-height: 0.9; color: var(--lime); display: inline-block; vertical-align: -0.15em; }
+    .links { width: 100%; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .btn { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; padding: 17px 20px 15px; border-radius: 8px; border: 2.5px solid var(--ink); text-decoration: none; cursor: pointer; transition: transform 0.14s ease, box-shadow 0.14s ease; box-shadow: 4px 4px 0 rgba(22,20,19,0.85); }
+    .btn:hover { transform: translateY(-2px); box-shadow: 6px 6px 0 rgba(22,20,19,0.9); }
+    .btn:active { transform: translateY(1px); box-shadow: 2px 2px 0 rgba(22,20,19,0.8); }
+    .btn-pink { background: var(--pink); color: var(--ink); }
+    .btn-lime { background: var(--lime); color: var(--ink); }
+    .btn-sky  { background: var(--sky);  color: var(--ink); }
+    .btn-label { font-family: 'Archivo', system-ui, sans-serif; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1; }
+    .book-top { font-family: 'Archivo', system-ui, sans-serif; font-weight: 900; font-size: 22px; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; }
+    .book-cta { font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 6px; }
+    .socials { display: flex; gap: 12px; justify-content: center; }
+    .soc { width: 46px; height: 46px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.28); display: grid; place-items: center; color: #fff; text-decoration: none; transition: border-color 0.15s, background 0.15s; }
+    .soc:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+  </style>
+</head>
+<body>
+  <div class="video-bg" aria-hidden="true"><div class="yt-wrap"><div id="hero-yt"></div></div></div>
+  <div class="scrim" aria-hidden="true"></div>
+  <div class="container">
+    <h1 class="name">Erin<br>Pompa</h1>
+    <div class="tagline">
+      <span>Speaker</span><span class="slash">/</span>
+      <span>Author</span><span class="slash">/</span>
+      <span>Educator</span>
+    </div>
+    <p class="headline">The <span class="hl">Shift</span> Starts Here.</p>
+    <p class="subtext">I'll help you embrace the power of a <span class="script">perspective shift.</span></p>
+    <div class="links">
+      <a class="btn btn-pink" href="https://erinpompa.com" target="_blank" rel="noopener"><span class="btn-label">Book Me to Speak &rarr;</span></a>
+      <a class="btn btn-lime" href="https://truthspeaks365.com" target="_blank" rel="noopener"><span class="btn-label">Book a TruthSpeaks 365 Speaker &rarr;</span></a>
+      <a class="btn btn-sky" href="https://webforms.pipedrive.com/f/clTep0VNxXRyL9v4qQAQH1MknN1K5SsbuThJFHcYabdZNS63Ki18JRtYVXQpC4UtRF" target="_blank" rel="noopener">
+        <span class="book-top">Book Coming 2027</span>
+        <span class="book-cta">Join the Crew &rarr;</span>
+      </a>
+    </div>
+    <div class="socials">
+      <a class="soc" href="https://www.instagram.com/erinpspeaks/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="soc" href="https://www.linkedin.com/in/erinpompa/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7H10V9h4v1.8A6 6 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a class="soc" href="https://www.youtube.com/@ErinPompa-gg3ds" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg width="22" height="16" viewBox="0 0 24 17" fill="currentColor"><path d="M23.5 2.5a3 3 0 0 0-2.1-2.1C19.5 0 12 0 12 0S4.5 0 2.6.4A3 3 0 0 0 .5 2.5 31 31 0 0 0 0 8.5a31 31 0 0 0 .5 6 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 8.5a31 31 0 0 0-.5-6z"/><polygon points="9.75,12.5 15.5,8.5 9.75,4.5" fill="#161413"/></svg>
+      </a>
+    </div>
+  </div>
+  <script>
+    (function(){var VID="guzhd-UOMiY",watchdog;function init(){if(!window.YT||!window.YT.Player)return;new window.YT.Player("hero-yt",{videoId:VID,playerVars:{autoplay:1,mute:1,controls:0,loop:1,playlist:VID,playsinline:1,modestbranding:1,rel:0,disablekb:1,fs:0,iv_load_policy:3,showinfo:0},events:{onReady:function(e){var p=e.target;p.mute();p.playVideo();try{p.getIframe().setAttribute("tabindex","-1");}catch(x){}clearInterval(watchdog);watchdog=setInterval(function(){try{var d=p.getDuration();if(d>0&&p.getCurrentTime()>=d-0.35)p.seekTo(0,true);}catch(x){}},250);},onStateChange:function(e){var S=window.YT.PlayerState;if(e.data===S.ENDED){e.target.seekTo(0,true);e.target.playVideo();}if(e.data===S.PAUSED){e.target.playVideo();}}}})}if(window.YT&&window.YT.Player){init();}else{var prev=window.onYouTubeIframeAPIReady;window.onYouTubeIframeAPIReady=function(){if(prev)prev();init();};if(!document.getElementById("yt-api")){var s=document.createElement("script");s.id="yt-api";s.src="https://www.youtube.com/iframe_api";document.body.appendChild(s);}}})();
+  </script>
+</body>
+</html>
