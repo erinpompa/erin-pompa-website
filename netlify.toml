@@ -1,2 +1,7 @@
 [build]
   publish = "project"
+
+[[redirects]]
+  from = "/links"
+  to = "/links.html"
+  status = 200
