@@ -6,7 +6,7 @@
    ===================================================================== */
 
 const go = (msg) => () => alert(msg + "\n\n(Placeholder — wire to real booking / link.)");
-const CAL_URL = "https://calendar.app.google/cvDWxLCAQ9Lv8SHr8";
+const CAL_URL = "https://calendar.app.google/cvDWxLCA9Lv8SHr8";
 const BOOK_URL = "https://webforms.pipedrive.com/f/clTep0VNxXRyL9v4qQAQH1MknN1K5SsbuThJFHcYabdZNS63Ki18JRtYVXQpC4UtRF";
 const TS_URL = "https://truthspeaks365.com";
 const openUrl = (url) => () => window.open(url, "_blank", "noopener");
@@ -288,7 +288,7 @@ const Logos = () => {
 };
 
 /* ---------- THE REEL ---------- */
-const REEL_ID = "1r6YKJvwogc";
+const REEL_ID = "vV7Fi1ZZaJE";
 const Reel = () => {
   const [playing, setPlaying] = React.useState(false);
   React.useEffect(() => {
