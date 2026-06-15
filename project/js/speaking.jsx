@@ -223,7 +223,7 @@ const SpeakingReel = () => {
                      <div style={{ position: "relative", aspectRatio: "16 / 9", borderRadius: "var(--radius-lg)",
                                           border: "3px solid rgba(255,102,196,0.6)", boxShadow: "12px 12px 0 var(--pink)",
                                           overflow: "hidden", display: "grid", placeItems: "center",
-                                          background: "linear-gradient(160deg, var(--ink-800), var(--ink-900))" }}>
+                    background: "url(https://img.youtube.com/vi/" + SPEAKING_REEL_ID + "/maxresdefault.jpg) center/cover" }}>
                         {playing ? (
                          <div id="speaking-reel-yt" style={{ width: "100%", height: "100%" }} />
                        ) : (
