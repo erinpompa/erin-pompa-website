@@ -259,20 +259,21 @@ const AudienceView = ({ data }) => (
       <div style={{ display: "flex", flexWrap: "wrap", gap: 14, marginBottom: 48 }}>
         {data.ways.map((w, i) => <Chip key={w} color={FUNKY[i % FUNKY.length]} i={i}>{w}</Chip>)}
       </div>
-    </Reve     {data.key === "youth" ? (
-       <div style={{ display: "flex", gap: 40, alignItems: "flex-start", flexWrap: "wrap" }}>
-         <div style={{ flex: "1 1 480px", minWidth: 280 }}>
-           <SpeakingReel />
-         </div>
-         <div style={{ flex: "1 1 380px", minWidth: 280 }}>
-           <TalkCard talk={data.talk} color={data.color} />
-         </div>
-       </div>
-     ) : (
-       <Reveal delay={2}>
-         <TalkCard talk={data.talk} color={data.color} />
-       </Reveal>
-     )}eal>
+    </Reveal>
+    {data.key === "youth" ? (
+      <div style={{ display: "flex", gap: 40, alignItems: "flex-start", flexWrap: "wrap" }}>
+        <div style={{ flex: "1 1 480px", minWidth: 280 }}>
+          <SpeakingReel />
+        </div>
+        <div style={{ flex: "1 1 380px", minWidth: 280 }}>
+          <TalkCard talk={data.talk} color={data.color} />
+        </div>
+      </div>
+    ) : (
+      <Reveal delay={2}>
+        <TalkCard talk={data.talk} color={data.color} />
+      </Reveal>
+    )}
   </div>
 );
 
