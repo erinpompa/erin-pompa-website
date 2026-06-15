@@ -196,6 +196,51 @@ const TalkCard = ({ talk, color }) => (
   </div>
 );
 
+/* ---------- SPEAKING REEL (YOUTH) ---------- */
+const SPEAKING_REEL_ID = "1r6YKJvwogc";
+const SpeakingReel = () => {
+     const [playing, setPlaying] = React.useState(false);
+     React.useEffect(() => {
+            if (!playing) return;
+            const start = () => {
+                     if (!window.YT || !window.YT.Player) return;
+                     new window.YT.Player("speaking-reel-yt", {
+                                videoId: SPEAKING_REEL_ID,
+                                playerVars: { autoplay: 1, rel: 0, modestbranding: 1, playsinline: 1, controls: 1, fs: 1 },
+                                events: { onReady: (e) => { try { e.target.unMute(); e.target.setVolume(100); e.target.playVideo(); } catch (err) {} } },
+                     });
+            };
+            const prev = window.onYouTubeIframeAPIReady;
+            window.onYouTubeIframeAPIReady = () => { prev && prev(); start(); };
+            if (!document.getElementById("yt-iframe-api")) {
+                     const s = document.createElement("script");
+                     s.id = "yt-iframe-api"; s.src = "https://www.youtube.com/iframe_api";
+                     document.body.appendChild(s);
+            } else if (window.YT && window.YT.Player) { start(); }
+     }, [playing]);
+     return (
+            <div style={{ marginBottom: 48 }}>
+                     <div style={{ position: "relative", aspectRatio: "16 / 9", borderRadius: "var(--radius-lg)",
+                                          border: "3px solid rgba(255,102,196,0.6)", boxShadow: "12px 12px 0 var(--pink)",
+                                          overflow: "hidden", display: "grid", placeItems: "center",
+                                          background: "linear-gradient(160deg, var(--ink-800), var(--ink-900))" }}>
+                        {playing ? (
+                         <div id="speaking-reel-yt" style={{ width: "100%", height: "100%" }} />
+                       ) : (
+                         <button onClick={() => setPlaying(true)} aria-label="Play video"
+                                        style={{ background: "none", border: "none", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
+                                        <div style={{ width: 80, height: 80, borderRadius: 999, background: "var(--pink)", display: "grid", placeItems: "center",
+                                                                   boxShadow: "0 0 40px rgba(255,102,196,0.5)" }}>
+                                                         <Icon name="play" size={32} color="var(--ink)" />
+                                        </div>
+                                        <span style={{ fontFamily: "var(--font-body)", fontWeight: 800, fontSize: 15, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--white)" }}>Watch the reel</span>span>
+                         </button>
+                       )}
+                     </div>
+            </div>
+          );
+};
+
 /* ---------- AUDIENCE VIEW ---------- */
 const AudienceView = ({ data }) => (
   <div className="wrap" style={{ paddingBottom: 20 }}>
@@ -215,6 +260,7 @@ const AudienceView = ({ data }) => (
         {data.ways.map((w, i) => <Chip key={w} color={FUNKY[i % FUNKY.length]} i={i}>{w}</Chip>)}
       </div>
     </Reveal>
+     {data.key === "youth" && <SpeakingReel />}
     <Reveal delay={2}>
       <TalkCard talk={data.talk} color={data.color} />
     </Reveal>
