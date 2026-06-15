@@ -223,7 +223,7 @@ const SpeakingReel = () => {
                      <div style={{ position: "relative", aspectRatio: "16 / 9", borderRadius: "var(--radius-lg)",
                                           border: "3px solid rgba(255,102,196,0.6)", boxShadow: "12px 12px 0 var(--pink)",
                                           overflow: "hidden", display: "grid", placeItems: "center",
-                    background: "url(https://img.youtube.com/vi/" + SPEAKING_REEL_ID + "/maxresdefault.jpg) center/cover" }}>
+                    background: "url(https://img.youtube.com/vi/" + SPEAKING_REEL_ID + "/hqdefault.jpg) center/cover" }}>
                         {playing ? (
                          <div id="speaking-reel-yt" style={{ width: "100%", height: "100%" }} />
                        ) : (
@@ -259,11 +259,20 @@ const AudienceView = ({ data }) => (
       <div style={{ display: "flex", flexWrap: "wrap", gap: 14, marginBottom: 48 }}>
         {data.ways.map((w, i) => <Chip key={w} color={FUNKY[i % FUNKY.length]} i={i}>{w}</Chip>)}
       </div>
-    </Reveal>
-     {data.key === "youth" && <SpeakingReel />}
-    <Reveal delay={2}>
-      <TalkCard talk={data.talk} color={data.color} />
-    </Reveal>
+    </Reve     {data.key === "youth" ? (
+       <div style={{ display: "flex", gap: 40, alignItems: "flex-start", flexWrap: "wrap" }}>
+         <div style={{ flex: "1 1 480px", minWidth: 280 }}>
+           <SpeakingReel />
+         </div>
+         <div style={{ flex: "1 1 380px", minWidth: 280 }}>
+           <TalkCard talk={data.talk} color={data.color} />
+         </div>
+       </div>
+     ) : (
+       <Reveal delay={2}>
+         <TalkCard talk={data.talk} color={data.color} />
+       </Reveal>
+     )}eal>
   </div>
 );
 
