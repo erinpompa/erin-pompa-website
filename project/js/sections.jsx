@@ -612,7 +612,7 @@ const Footer = () => (
           <div style={{ fontFamily: "var(--font-display)", fontWeight: 900, textTransform: "uppercase", letterSpacing: "-0.03em", fontSize: 26 }}>
             Erin <span style={{ color: "var(--pink)" }}>Pompa</span>
           </div>
-          <div style={{ fontFamily: "var(--font-script)", fontWeight: 600, fontSize: 23, color: "var(--lime)", marginTop: 2 }}>you can do this, your voice matters.</div>
+          <div style={{ fontFamily: "var(--font-script)", fontWeight: 600, fontSize: 23, color: "var(--lime)", marginTop: 2 }}>the shift starts here.</div>
         </div>
       </div>
       <div style={{ display: "flex", gap: 12 }}>
