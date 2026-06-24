@@ -21,10 +21,10 @@ const useIsMobile = () => {
 
 /* ---------- NAV ---------- */
 const NAV = [
-{ label: "About", href: "About.html" },
-{ label: "Speaking", href: "Speaking.html" },
+{ label: "About", href: "about.html" },
+{ label: "Speaking", href: "speaking.html" },
 { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" },
-{ label: "Contact", href: "Contact.html" },
+{ label: "Contact", href: "contact.html" },
 ];
 const ContactNav = () => {
 const [scrolled, setScrolled] = React.useState(false);
