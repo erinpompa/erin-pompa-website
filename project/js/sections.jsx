@@ -616,7 +616,7 @@ const Footer = () => (
         </div>
       </div>
       <div style={{ display: "flex", gap: 12 }}>
-        {[{ n: "instagram", h: "https://www.instagram.com/erinpspeaks/", l: "Instagram" }, { n: "linkedin", h: "https://www.linkedin.com/in/erinpompa/", l: "LinkedIn" }, { n: "youtube", h: "https://www.youtube.com/@ErinPompa-gg3ds", l: "YouTube" }].map(s => (
+        {[{ n: "instagram", h: "https://www.instagram.com/erinpspeaks/", l: "Instagram" }, { n: "facebook", h: "https://www.facebook.com/erinpspeaks", l: "Facebook" }, { n: "linkedin", h: "https://www.linkedin.com/in/erinpompa/", l: "LinkedIn" }, { n: "youtube", h: "https://www.youtube.com/@ErinPompa-gg3ds", l: "YouTube" }].map(s => (
           <a key={s.h} href={s.h} target="_blank" rel="noopener" aria-label={"Erin on " + s.l} style={{ width: 46, height: 46, borderRadius: 999,
             border: "1px solid rgba(255,255,255,0.25)", display: "grid", placeItems: "center", textDecoration: "none", color: "var(--white)" }}><SocialIcon name={s.n} size={19} /></a>
         ))}
