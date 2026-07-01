@@ -195,6 +195,7 @@ const SocialIcon = ({ name, size = 19 }) => {
     instagram: <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5.5" /><circle cx="12" cy="12" r="4.2" /><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none" /></g>,
     linkedin: <path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.25 8h4.5v16H.25V8zm7.25 0h4.32v2.19h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-4.5v-7.3c0-1.74-.03-3.98-2.42-3.98-2.42 0-2.79 1.9-2.79 3.86V24H7.5V8z" />,
     youtube: <path fill="currentColor" d="M23.5 6.5c-.28-1.05-1.1-1.87-2.15-2.15C19.4 3.9 12 3.9 12 3.9s-7.4 0-9.35.45C1.6 4.63.78 5.45.5 6.5.05 8.45.05 12 .05 12s0 3.55.45 5.5c.28 1.05 1.1 1.87 2.15 2.15 1.95.45 9.35.45 9.35.45s7.4 0 9.35-.45c1.05-.28 1.87-1.1 2.15-2.15.45-1.95.45-5.5.45-5.5s0-3.55-.45-5.5zM9.6 15.5v-7l6.1 3.5-6.1 3.5z" />,
+    facebook: <path fill="currentColor" d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />,
   };
   return <svg width={size} height={size} viewBox="0 0 24 24" style={{ color: "currentColor", display: "block" }}>{paths[name]}</svg>;
 };
