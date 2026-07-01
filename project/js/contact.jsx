@@ -246,6 +246,7 @@ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap
 <Reveal delay={2}>
 <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
 {[{ l: "Instagram", n: "instagram", bg: "var(--pink)", fg: "var(--white)", h: "https://www.instagram.com/erinpspeaks/" },
+{ l: "Facebook", n: "facebook", bg: "#1877f2", fg: "var(--white)", h: "https://www.facebook.com/erinpspeaks" },
 { l: "LinkedIn", n: "linkedin", bg: "var(--sky)", fg: "var(--ink)", h: "https://www.linkedin.com/in/erinpompa/" },
 { l: "YouTube", n: "youtube", bg: "var(--violet)", fg: "var(--white)", h: "https://www.youtube.com/@ErinPompa-gg3ds" }].map(s => (
 <a key={s.l} href={s.h} target="_blank" rel="noopener" style={{ background: s.bg, border: "2px solid var(--ink)", borderRadius: 999, padding: "11px 22px",
@@ -260,6 +261,10 @@ boxShadow: "3px 3px 0 var(--ink)", display: "inline-flex", alignItems: "center",
 ) : s.n === "linkedin" ? (
 <svg width="18" height="18" viewBox="0 0 24 24" fill={s.fg} style={{ flexShrink: 0 }}>
 <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18V9.96H5.67V18h2.67zM7 8.79a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zM18.34 18v-4.41c0-2.36-1.26-3.46-2.94-3.46-1.36 0-1.96.75-2.3 1.27V9.96h-2.67V18h2.67v-4.49c0-.24.02-.47.09-.64.18-.47.61-.96 1.32-.96.93 0 1.3.71 1.3 1.75V18h2.73z"></path>
+</svg>
+) : s.n === "facebook" ? (
+<svg width="18" height="18" viewBox="0 0 24 24" fill={s.fg} style={{ flexShrink: 0 }}>
+<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
 </svg>
 ) : (
 <svg width="18" height="18" viewBox="0 0 24 24" fill={s.fg} style={{ flexShrink: 0 }}>
@@ -287,7 +292,7 @@ Erin <span style={{ color: "var(--pink)" }}>Pompa</span>
 <div style={{ fontFamily: "var(--font-script)", fontWeight: 600, fontSize: 23, color: "var(--lime)", marginTop: 2 }}>the shift starts here.</div>
 </a>
 <div style={{ display: "flex", gap: 12 }}>
-{[{ n: "instagram", h: "https://www.instagram.com/erinpspeaks/", l: "Instagram" }, { n: "linkedin", h: "https://www.linkedin.com/in/erinpompa/", l: "LinkedIn" }, { n: "youtube", h: "https://www.youtube.com/@ErinPompa-gg3ds", l: "YouTube" }].map(s => (
+{[{ n: "instagram", h: "https://www.instagram.com/erinpspeaks/", l: "Instagram" }, { n: "facebook", h: "https://www.facebook.com/erinpspeaks", l: "Facebook" }, { n: "linkedin", h: "https://www.linkedin.com/in/erinpompa/", l: "LinkedIn" }, { n: "youtube", h: "https://www.youtube.com/@ErinPompa-gg3ds", l: "YouTube" }].map(s => (
 <a key={s.h} href={s.h} target="_blank" rel="noopener" aria-label={"Erin on " + s.l} style={{ width: 46, height: 46, borderRadius: 999, border: "1px solid rgba(255,255,255,0.25)", display: "grid", placeItems: "center", textDecoration: "none", color: "var(--white)" }}><SocialIcon name={s.n} size={19} /></a>
 ))}
 </div>
