@@ -170,7 +170,7 @@ const Story = () => (
         </Reveal>
         <Reveal delay={2}>
           <p style={{ fontSize: 18, lineHeight: 1.6, color: "var(--ink-700)", fontWeight: 500, margin: 0, maxWidth: 560 }}>
-            I saw how powerful emotional intelligence could be, not just in shaping my students' growth, but in shaping human growth. That realization pushed me beyond the classroom. Now I bring raw, real, relatable conversations into schools and organizations, the kind that strengthen resilience and help students and professionals make choices they're proud of.
+            I saw how powerful character development could be, not just in shaping my students' growth, but in shaping human growth. That realization pushed me beyond the classroom. Now I bring raw, real, relatable conversations into schools and organizations, the kind that strengthen resilience and help students and professionals make choices they're proud of.
           </p>
         </Reveal>
       </div>
