@@ -15,6 +15,7 @@ const openUrl = (url) => () => window.open(url, "_blank", "noopener");
 const NAV_LINKS = [
   { label: "About", href: "About.html" },
   { label: "Speaking", href: "Speaking.html" },
+  { label: "Coaching", href: "coaching.html" },
   { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" },
   { label: "Contact", href: "Contact.html" },
 ];
