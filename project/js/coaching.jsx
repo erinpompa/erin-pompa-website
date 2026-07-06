@@ -287,7 +287,8 @@ marginBottom: -2.5
       {[
         { icon: "calendar", label: "Dates", value: "September – December 2026" },
         { icon: "video", label: "Format", value: "8 live group sessions, 2x/month" },
-        { icon: "users", label: "Cohort", value: "Limited spots — small group only" },
+        { icon: "users", label: "Cohort", value: "10-12 women — intimate group" },
+        { icon: "dollar-sign", label: "Investment", value: "$4,000" },
         { icon: "star", label: "Bonus", value: "6 months Speaker Hub access included" },
       ].map((d, i) => (
         <div key={i} style={{ borderRadius: "var(--radius-lg)", padding: "24px 20px",
