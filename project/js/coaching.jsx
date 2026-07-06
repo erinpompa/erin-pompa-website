@@ -1,5 +1,5 @@
 /* =====================================================================
-COACHING — Erin Pompa
+COACHING , Erin Pompa
 Two tabs: Public Speaking Coaching | Digital Downloads
 ===================================================================== */
 
@@ -138,7 +138,7 @@ marginBottom: -2.5
 <div>
   {/* HEADLINE */}
   <Reveal>
-    <Kicker color="var(--ink)" style={{ marginBottom: 16 }}>Group coaching · Sept – Dec 2026</Kicker>
+    <Kicker color="var(--ink)" style={{ marginBottom: 16 }}>Group coaching · Sept to Dec 2026</Kicker>
   </Reveal>
   <Reveal delay={1}>
     <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 900, textTransform: "uppercase",
@@ -162,9 +162,9 @@ marginBottom: -2.5
       <div style={{ fontFamily: "var(--font-body)", fontWeight: 800, fontSize: 12, letterSpacing: "0.16em",
         textTransform: "uppercase", color: "var(--lime)", marginBottom: 22 }}>This is for you if...</div>
       {[
-        "You have a story that changed you — and you know it can change other people too",
-        "You're done watching other women on stages that should have your name on them",
-        "You want to build a speaking business, not just give a speech",
+        "You have a story you feel called to share and you want to impact people using your experiences",
+        "You're tired of sitting back, wishing and hoping to be a speaker, and you're ready to make it come to life",
+        "You want to build a speaking business that is lucrative, not just street cred",
       ].map((item, i) => (
         <div key={i} style={{ display: "flex", gap: 14, alignItems: "flex-start", marginBottom: i < 2 ? 18 : 0 }}>
           <Icon name="arrow-right" size={20} color="var(--pink)" style={{ flex: "none", marginTop: 3 }} />
@@ -186,7 +186,7 @@ marginBottom: -2.5
       {[
         { icon: "mic-2", title: "A performance-ready keynote", body: "Written, refined, and rehearsed. You deliver it in front of the group at the end of the program." },
         { icon: "briefcase", title: "A speaker business foundation", body: "The systems, templates, and strategy to get booked, get paid, and run your business like a pro." },
-        { icon: "users", title: "A community behind you", body: "A small cohort of driven women who get it — and will cheer you on long after the program ends." },
+        { icon: "users", title: "A community behind you", body: "A small cohort of driven women who get it, who will cheer you on long after the program ends." },
       ].map((card, i) => (
         <div key={i} style={{ background: "var(--lime)", color: "var(--ink)", borderRadius: "var(--radius-lg)",
           padding: "28px 24px", border: "2px solid var(--ink)", boxShadow: "5px 5px 0 var(--ink)" }}>
@@ -205,7 +205,7 @@ marginBottom: -2.5
       The 4-month breakdown
     </h3>
     <p style={{ fontSize: 17, color: "var(--ink-600)", fontWeight: 500, margin: "0 0 30px" }}>
-      8 live group sessions, 2 per month — September through December.
+      8 live group sessions, 2 per month , September through December.
     </p>
   </Reveal>
   <Reveal delay={2}>
@@ -258,7 +258,7 @@ marginBottom: -2.5
         6 months of <HL color="var(--lime)">Speaker Hub</HL> access
       </h3>
       <p style={{ fontSize: 17, lineHeight: 1.6, color: "var(--fg-on-dark2)", fontWeight: 500, maxWidth: 560, margin: "0 0 32px" }}>
-        The Speaker Hub is your async resource library — everything you need to run a speaking business, all in one place. Think of it as the business side of being a speaker, laid out step by step. You get 6 full months of access starting day one.
+        The Speaker Hub is your async resource library: everything you need to run a speaking business, all in one place. Think of it as the business side of being a speaker, laid out step by step. You get 6 full months of access starting day one.
       </p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
         {[
@@ -289,11 +289,11 @@ marginBottom: -2.5
   <Reveal delay={2}>
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: 16, marginBottom: 48 }}>
       {[
-        { icon: "calendar", label: "Dates", value: "September through December 2026", bg: "var(--lime)", tc: "var(--ink)", ic: "var(--ink)" },
+        { icon: "calendar", label: "Dates", value: "September 2026 through December 2026", bg: "var(--lime)", tc: "var(--ink)", ic: "var(--ink)" },
         { icon: "video", label: "Format", value: "8 live group sessions, 2x/month", bg: "var(--ink)", tc: "var(--white)", ic: "var(--lime)" },
+        { icon: "coffee", label: "Office Hours", value: "1 session per month", bg: "#3b82f6", tc: "var(--white)", ic: "var(--white)" },
         { icon: "users", label: "Cohort", value: "10-12 women, intimate group", bg: "var(--pink)", tc: "var(--white)", ic: "var(--white)" },
         { icon: "dollar-sign", label: "Investment", value: "$4,000", bg: "#fafaf9", tc: "var(--ink)", ic: "var(--pink)" },
-        { icon: "coffee", label: "Office Hours", value: "1 session per month", bg: "var(--lime)", tc: "var(--ink)", ic: "var(--ink)" },
         { icon: "star", label: "Bonus", value: "6 months Speaker Hub access included", bg: "var(--ink)", tc: "var(--white)", ic: "var(--lime)" },
       ].map((d, i) => (
         <div key={i} style={{ borderRadius: "var(--radius-lg)", padding: "24px 20px",
@@ -312,7 +312,7 @@ marginBottom: -2.5
       <Button variant="pink" shape="blob" size="lg" onClick={openUrl(CAL_URL)}>
         Apply now
       </Button>
-      <p style={{ fontSize: 15, color: "var(--ink-500)", fontWeight: 500, margin: 0 }}>
+      <p style={{ fontSize: 19, color: "var(--ink)", fontWeight: 600, margin: 0, lineHeight: 1.45 }}>
         Cohort kicks off September 2026. Schedule a call so we can see if we're a good fit.
       </p>
     </div>
@@ -347,7 +347,7 @@ color: "var(--white)", margin: "0 0 18px" }}>
 Get Booked: The <HL color="var(--pink)">Speaker Pipeline Kit</HL>
 </h3>
 <p style={{ fontSize: 17, lineHeight: 1.55, color: "var(--fg-on-dark2)", fontWeight: 500, margin: "0 0 28px", maxWidth: 420 }}>
-Everything you need to land speaking gigs — from crafting your pitch to building your pipeline. Built from Erin's real booking system.
+Everything you need to land speaking gigs, from crafting your pitch to building your pipeline. Built from Erin's real booking system.
 </p>
 <Button variant="lime" shape="cutout" size="lg" onClick={openUrl(STAN_KIT)}>
 Get it now →
