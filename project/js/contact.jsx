@@ -3,7 +3,7 @@ LET'S CONNECT (Contact) — Erin Pompa
 Split hero, reason selector, inquiry form. Uses primitives from ui.jsx.
 ===================================================================== */
 
-const CAL_URL = "https://calendar.app.google/cvDWxLCAQ9Lv8SHr8";
+const CAL_URL = "https://calendar.app.google/4FLTt7E3PFsGrX6h8";
 const BOOK_URL = "https://webforms.pipedrive.com/f/clTep0VNxXRyL9v4qQAQH1MknN1K5SsbuThJFHcYabdZNS63Ki18JRtYVXQpC4UtRF";
 const HOME = "index.html";
 const openUrl = (url) => () => window.open(url, "_blank", "noopener");
@@ -23,6 +23,7 @@ const useIsMobile = () => {
 const NAV = [
 { label: "About", href: "about.html" },
 { label: "Speaking", href: "speaking.html" },
+{ label: "Coaching", href: "coaching.html" },
 { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" },
 { label: "Contact", href: "contact.html" },
 ];
