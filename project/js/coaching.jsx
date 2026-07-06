@@ -92,15 +92,18 @@ minHeight: "52vh", display: "flex", alignItems: "center", paddingTop: 140, paddi
 <Reveal><Kicker color="rgba(255,255,255,0.78)" slash="var(--lime)" style={{ marginBottom: 22 }}>Work with Erin</Kicker></Reveal>
 <Reveal delay={1}>
 <h1 style={{ fontFamily: "var(--font-display)", fontWeight: 900, textTransform: "uppercase",
-letterSpacing: "-0.04em", fontSize: "clamp(56px, 9vw, 128px)", lineHeight: 0.88, margin: "0 0 24px" }}>
-Level up<br /><HL color="var(--lime)">your voice.</HL>
+letterSpacing: "-0.04em", fontSize: "clamp(36px, 6vw, 96px)", lineHeight: 0.88, margin: "0 0 32px" }}>
+Your story belongs<br /><HL color="var(--lime)">at the front of the room.</HL>
 </h1>
 </Reveal>
 <Reveal delay={2}>
-<p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(18px, 2vw, 22px)", fontWeight: 500,
-lineHeight: 1.5, color: "var(--fg-on-dark1)", maxWidth: 580, margin: 0 }}>
-Coaching and resources for speakers, educators, and professionals ready to own the room.
-</p>
+<div style={{ display: "flex", alignItems: "flex-start", gap: 20, maxWidth: 580, margin: "0 0 8px" }}>
+<div style={{ fontFamily: "var(--font-display)", fontWeight: 900, fontSize: "clamp(52px, 6.5vw, 80px)",
+color: "var(--lime)", lineHeight: 1, flexShrink: 0 }}>70%</div>
+<div style={{ fontSize: 17, lineHeight: 1.55, color: "var(--fg-on-dark1)", fontWeight: 500, paddingTop: 10 }}>
+of professional speakers are men. We're changing who's at the front of the room.
+</div>
+</div>
 </Reveal>
 </div>
 </section>
@@ -145,10 +148,10 @@ marginBottom: -2.5
   </Reveal>
   <Reveal delay={2}>
     <p style={{ fontSize: 20, lineHeight: 1.65, color: "var(--ink-700)", fontWeight: 500, maxWidth: 680, margin: "0 0 16px" }}>
-      The Keynote Collective is a 4-month group coaching program for women who are ready to write their keynote, nail their delivery, and build a speaking business that creates real impact.
+      Own Your Stage is a 4-month group coaching program for women with real stories who are ready to step to the front of the room, share their voice, and build a speaking business with real impact.
     </p>
     <p style={{ fontSize: 18, lineHeight: 1.65, color: "var(--ink-600)", fontWeight: 500, maxWidth: 680, margin: "0 0 52px" }}>
-      You leave with a full, performance-ready keynote — and the tools and systems to build a speaking business around it.
+      You leave with a performance-ready keynote and the tools, confidence, and community to build a speaking business around it.
     </p>
   </Reveal>
 
@@ -208,25 +211,26 @@ marginBottom: -2.5
   <Reveal delay={2}>
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20, marginBottom: 64 }}>
       {[
-        { month: "Month 1", label: "Know Your Message", sessions: [
+        { month: "Month 1", icon: "compass", label: "Know Your Message", sessions: [
           "Audience, goals & signature framework",
           "Story development & story framework",
         ]},
-        { month: "Month 2", label: "Build Your Keynote", sessions: [
+        { month: "Month 2", icon: "pen-tool", label: "Build Your Keynote", sessions: [
           "Vignette stories & keynote structure",
           "Writing the keynote & audience engagement",
         ]},
-        { month: "Month 3", label: "Write & Refine", sessions: [
+        { month: "Month 3", icon: "edit-3", label: "Write & Refine", sessions: [
           "Keynote editing & refinement",
-          "Performance coaching — intro & section 1",
+          "Performance coaching",
         ]},
-        { month: "Month 4", label: "Own the Stage", sessions: [
-          "Performance coaching — sections 2 & 3",
-          "Final keynote run-through with slides",
+        { month: "Month 4", icon: "star", label: "Own the Stage", sessions: [
+          "Performance coaching",
+          "Final keynote presentation",
         ]},
       ].map((block, i) => (
         <div key={i} style={{ borderRadius: "var(--radius-lg)", padding: "26px 24px",
           border: "2px solid var(--ink)", background: "var(--white)" }}>
+          <Icon name={block.icon} size={22} color="var(--pink)" style={{ marginBottom: 14 }} />
           <div style={{ fontFamily: "var(--font-body)", fontWeight: 800, fontSize: 12, letterSpacing: "0.14em",
             textTransform: "uppercase", color: "var(--pink)", marginBottom: 8 }}>{block.month}</div>
           <div style={{ fontFamily: "var(--font-display)", fontWeight: 900, textTransform: "uppercase",
@@ -285,18 +289,19 @@ marginBottom: -2.5
   <Reveal delay={2}>
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: 16, marginBottom: 48 }}>
       {[
-        { icon: "calendar", label: "Dates", value: "September – December 2026" },
-        { icon: "video", label: "Format", value: "8 live group sessions, 2x/month" },
-        { icon: "users", label: "Cohort", value: "10-12 women — intimate group" },
-        { icon: "dollar-sign", label: "Investment", value: "$4,000" },
-        { icon: "star", label: "Bonus", value: "6 months Speaker Hub access included" },
+        { icon: "calendar", label: "Dates", value: "September through December 2026", bg: "var(--lime)", tc: "var(--ink)", ic: "var(--ink)" },
+        { icon: "video", label: "Format", value: "8 live group sessions, 2x/month", bg: "var(--ink)", tc: "var(--white)", ic: "var(--lime)" },
+        { icon: "users", label: "Cohort", value: "10-12 women, intimate group", bg: "var(--pink)", tc: "var(--white)", ic: "var(--white)" },
+        { icon: "dollar-sign", label: "Investment", value: "$4,000", bg: "#fafaf9", tc: "var(--ink)", ic: "var(--pink)" },
+        { icon: "coffee", label: "Office Hours", value: "1 session per month", bg: "var(--lime)", tc: "var(--ink)", ic: "var(--ink)" },
+        { icon: "star", label: "Bonus", value: "6 months Speaker Hub access included", bg: "var(--ink)", tc: "var(--white)", ic: "var(--lime)" },
       ].map((d, i) => (
         <div key={i} style={{ borderRadius: "var(--radius-lg)", padding: "24px 20px",
-          border: "2px solid var(--ink-200)", background: "#fafaf9", textAlign: "center" }}>
-          <Icon name={d.icon} size={22} color="var(--pink)" style={{ marginBottom: 10 }} />
+          border: "2px solid var(--ink)", background: d.bg, textAlign: "center" }}>
+          <Icon name={d.icon} size={22} color={d.ic} style={{ marginBottom: 10 }} />
           <div style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 11, letterSpacing: "0.12em",
-            textTransform: "uppercase", color: "var(--ink-500)", marginBottom: 6 }}>{d.label}</div>
-          <div style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 15, color: "var(--ink)", lineHeight: 1.4 }}>{d.value}</div>
+            textTransform: "uppercase", color: d.tc, opacity: 0.7, marginBottom: 6 }}>{d.label}</div>
+          <div style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 15, color: d.tc, lineHeight: 1.4 }}>{d.value}</div>
         </div>
       ))}
     </div>
@@ -305,10 +310,10 @@ marginBottom: -2.5
   <Reveal delay={3}>
     <div style={{ display: "flex", gap: 20, flexWrap: "wrap", alignItems: "center" }}>
       <Button variant="pink" shape="blob" size="lg" onClick={openUrl(CAL_URL)}>
-        Apply now — let's talk →
+        Apply now
       </Button>
       <p style={{ fontSize: 15, color: "var(--ink-500)", fontWeight: 500, margin: 0 }}>
-        Spots are limited. Schedule a call to see if we're a good fit.
+        Cohort kicks off September 2026. Schedule a call so we can see if we're a good fit.
       </p>
     </div>
   </Reveal>
@@ -371,28 +376,6 @@ Get it now →
 );
 };
 
-/* ---------- CTA ---------- */
-const CoachingCTA = () => (
-<section className="section grain" style={{ background: "var(--ink)", color: "var(--white)", position: "relative", overflow: "hidden", textAlign: "center" }}>
-<div className="spotlight" style={{ opacity: 0.7 }}></div>
-<div className="wrap" style={{ position: "relative", zIndex: 2 }}>
-<Reveal><Kicker color="rgba(255,255,255,0.78)" slash="var(--lime)" style={{ marginBottom: 24, justifyContent: "center" }}>Ready to share your message?</Kicker></Reveal>
-<Reveal delay={1}>
-<h2 style={{ fontFamily: "var(--font-display)", fontWeight: 900, textTransform: "uppercase",
-letterSpacing: "-0.04em", fontSize: "clamp(40px, 7vw, 100px)", lineHeight: 0.88, margin: "0 0 28px" }}>
-Let's <HL color="var(--pink)">build</HL><br/>your voice.
-</h2>
-</Reveal>
-<Reveal delay={2}>
-<Button variant="pink" shape="blob" size="lg" onClick={openUrl(CAL_URL)}>Schedule a free call →</Button>
-<p style={{ fontSize: 16, color: "var(--fg-on-dark2)", fontWeight: 500, margin: "20px 0 0", maxWidth: 440, lineHeight: 1.6 }}>
-  Book a call to learn more about the 4-month Keynote Collective and see if it's the right fit for you.
-</p>
-</Reveal>
-</div>
-</section>
-);
-
 /* ---------- FOOTER ---------- */
 const CoachingFooter = () => (
 <footer style={{ background: "#0f0d0c", color: "var(--white)", padding: "56px 40px 40px", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
@@ -433,7 +416,6 @@ return (
 <CoachingNav />
 <CoachingHero />
 <CoachingTabs />
-<CoachingCTA />
 <CoachingFooter />
 </div>
 );
