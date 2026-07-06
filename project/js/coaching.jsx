@@ -376,7 +376,7 @@ const CoachingCTA = () => (
 <section className="section grain" style={{ background: "var(--ink)", color: "var(--white)", position: "relative", overflow: "hidden", textAlign: "center" }}>
 <div className="spotlight" style={{ opacity: 0.7 }}></div>
 <div className="wrap" style={{ position: "relative", zIndex: 2 }}>
-<Reveal><Kicker color="rgba(255,255,255,0.78)" slash="var(--lime)" style={{ marginBottom: 24, justifyContent: "center" }}>Ready to level up?</Kicker></Reveal>
+<Reveal><Kicker color="rgba(255,255,255,0.78)" slash="var(--lime)" style={{ marginBottom: 24, justifyContent: "center" }}>Ready to share your message?</Kicker></Reveal>
 <Reveal delay={1}>
 <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 900, textTransform: "uppercase",
 letterSpacing: "-0.04em", fontSize: "clamp(40px, 7vw, 100px)", lineHeight: 0.88, margin: "0 0 28px" }}>
@@ -385,6 +385,9 @@ Let's <HL color="var(--pink)">build</HL><br/>your voice.
 </Reveal>
 <Reveal delay={2}>
 <Button variant="pink" shape="blob" size="lg" onClick={openUrl(CAL_URL)}>Schedule a free call →</Button>
+<p style={{ fontSize: 16, color: "var(--fg-on-dark2)", fontWeight: 500, margin: "20px 0 0", maxWidth: 440, lineHeight: 1.6 }}>
+  Book a call to learn more about the 4-month Keynote Collective and see if it's the right fit for you.
+</p>
 </Reveal>
 </div>
 </section>
