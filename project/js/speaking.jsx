@@ -4,7 +4,7 @@
    Same arena vibe. Uses primitives from ui.jsx.
    ===================================================================== */
 
-const CAL_URL = "https://calendar.app.google/cvDWxLCAQ9Lv8SHr8";
+const CAL_URL = "https://calendar.app.google/4FLTt7E3PFsGrX6h8";
 const HOME = "index.html";
 const openUrl = (url) => () => window.open(url, "_blank", "noopener");
 
@@ -12,6 +12,7 @@ const openUrl = (url) => () => window.open(url, "_blank", "noopener");
 const NAV_LINKS = [
   { label: "About", href: "About.html" },
   { label: "Speaking", href: "Speaking.html" },
+  { label: "Coaching", href: "coaching.html" },
   { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" },
   { label: "Contact", href: "Contact.html" },
 ];
@@ -191,7 +192,7 @@ const TalkCard = ({ talk, color }) => (
         ))}
       </ul>
 
-      <Button variant="pink" shape="blob" size="lg" onClick={openUrl("https://calendar.app.google/cvDWxLCAQ9Lv8SHr8")}>Book this talk ↗</Button>
+      <Button variant="pink" shape="blob" size="lg" onClick={openUrl("https://calendar.app.google/4FLTt7E3PFsGrX6h8")}>Book this talk ↗</Button>
     </div>
   </div>
 );
