@@ -3,7 +3,7 @@ COACHING — Erin Pompa
 Two tabs: Public Speaking Coaching | Digital Downloads
 ===================================================================== */
 
-const CAL_URL = "https://calendar.app.google/4FLTt7E3PFsGrX6h8";
+const CAL_URL = "https://calendar.app.google/5FR53gxBzNiY4Edz7";
 const STAN_KIT = "https://stan.store/ErinPompa/p/get-booked-the-speaker-pipeline-kit";
 const HOME = "index.html";
 const openUrl = (url) => () => window.open(url, "_blank", "noopener");
@@ -308,7 +308,7 @@ marginBottom: -2.5
         Apply now — let's talk →
       </Button>
       <p style={{ fontSize: 15, color: "var(--ink-500)", fontWeight: 500, margin: 0 }}>
-        Spots are limited. Book a call and let's see if it's a fit.
+        Spots are limited. Schedule a call to see if we're a good fit.
       </p>
     </div>
   </Reveal>
