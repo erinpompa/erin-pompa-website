@@ -6,7 +6,7 @@
    ===================================================================== */
 
 const go = (msg) => () => alert(msg + "\n\n(Placeholder — wire to real booking / link.)");
-const CAL_URL = "https://calendar.app.google/cvDWxLCA9Lv8SHr8";
+const CAL_URL = "https://calendar.app.google/4FLTt7E3PFsGrX6h8";
 const BOOK_URL = "https://webforms.pipedrive.com/f/clTep0VNxXRyL9v4qQAQH1MknN1K5SsbuThJFHcYabdZNS63Ki18JRtYVXQpC4UtRF";
 const TS_URL = "https://truthspeaks365.com";
 const openUrl = (url) => () => window.open(url, "_blank", "noopener");
@@ -55,7 +55,7 @@ const Nav = () => {
               color: "rgba(255,255,255,0.82)", cursor: "pointer", whiteSpace: "nowrap"
             }}>{l.label}</a>
           ))}
-          <Button variant="pink" shape="cutout" size="sm" onClick={openUrl("https://calendar.app.google/cvDWxLCAQ9Lv8SHr8")}>Book Erin</Button>
+          <Button variant="pink" shape="cutout" size="sm" onClick={openUrl(CAL_URL)}>Book Erin</Button>
         </nav>
         <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"}>
           <Icon name={menuOpen ? "x" : "menu"} size={26} color="var(--white)" />
