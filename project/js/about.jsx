@@ -5,13 +5,13 @@
    third person in the formal bio.
    ===================================================================== */
 
-const CAL_URL = "https://calendar.app.google/cvDWxLCAQ9Lv8SHr8";
+const CAL_URL = "https://calendar.app.google/4FLTt7E3PFsGrX6h8";
 const TS_URL = "https://truthspeaks365.com";
 const HOME = "index.html";
 const openUrl = (url) => () => window.open(url, "_blank", "noopener");
 
 /* ---------- NAV ---------- */
-const ABOUT_LINKS = [{ label: "About", href: "About.html" }, { label: "Speaking", href: "Speaking.html" }, { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" }, { label: "Contact", href: "Contact.html" }];
+const ABOUT_LINKS = [{ label: "About", href: "About.html" }, { label: "Speaking", href: "Speaking.html" }, { label: "Coaching", href: "coaching.html" }, { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" }, { label: "Contact", href: "Contact.html" }];
 const AboutNav = () => {
   const [scrolled, setScrolled] = React.useState(false);
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -49,7 +49,7 @@ const AboutNav = () => {
                 color: l.label === "About" ? "var(--lime)" : "rgba(255,255,255,0.82)", cursor: "pointer", whiteSpace: "nowrap"
               }}>{l.label}</a>
           ))}
-          <Button variant="pink" shape="cutout" size="sm" onClick={openUrl("https://calendar.app.google/cvDWxLCAQ9Lv8SHr8")}>Book Erin</Button>
+          <Button variant="pink" shape="cutout" size="sm" onClick={openUrl("https://calendar.app.google/4FLTt7E3PFsGrX6h8")}>Book Erin</Button>
         </nav>
         <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"}>
           <Icon name={menuOpen ? "x" : "menu"} size={26} color="var(--white)" />
