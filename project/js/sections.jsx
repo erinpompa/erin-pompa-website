@@ -13,11 +13,12 @@ const openUrl = (url) => () => window.open(url, "_blank", "noopener");
 
 /* ---------- NAV ---------- */
 const NAV_LINKS = [
-  { label: "About", href: "About.html" },
-  { label: "Speaking", href: "Speaking.html" },
+  { label: "About", href: "about.html" },
+  { label: "Speaking", href: "speaking.html" },
+  { label: "Coaching", href: "coaching.html" },
   { label: "Coaching", href: "coaching.html" },
   { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" },
-  { label: "Contact", href: "Contact.html" },
+  { label: "Contact", href: "contact.html" },
 ];
 const Nav = () => {
   const [scrolled, setScrolled] = React.useState(false);
