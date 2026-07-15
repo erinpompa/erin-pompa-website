@@ -10,11 +10,11 @@ const openUrl = (url) => () => window.open(url, "_blank", "noopener");
 
 /* ---------- NAV ---------- */
 const NAV_LINKS = [
-  { label: "About", href: "About.html" },
-  { label: "Speaking", href: "Speaking.html" },
+  { label: "About", href: "about.html" },
+  { label: "Speaking", href: "speaking.html" },
   { label: "Coaching", href: "coaching.html" },
   { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" },
-  { label: "Contact", href: "Contact.html" },
+  { label: "Contact", href: "contact.html" },
 ];
 const SpeakingNav = () => {
   const [scrolled, setScrolled] = React.useState(false);
@@ -45,10 +45,11 @@ const SpeakingNav = () => {
         </div>
       </a>
       <nav className="nav-links" style={{ display: "flex", alignItems: "center", gap: 30 }}>
-        <a href="About.html" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>About</a>
-        <a href="Speaking.html" aria-current="page" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "var(--lime)", whiteSpace: "nowrap" }}>Speaking</a>
+        <a href="about.html" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>About</a>
+        <a href="coaching.html" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>Coaching</a>
+        <a href="speaking.html" aria-current="page" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "var(--lime)", whiteSpace: "nowrap" }}>Speaking</a>
         <a href="https://truthspeaks365.com" target="_blank" rel="noopener" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>TruthSpeaks 365</a>
-        <a href="Contact.html" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>Contact</a>
+        <a href="contact.html" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>Contact</a>
         <Button variant="pink" shape="cutout" size="sm" onClick={openUrl(CAL_URL)}>Book Erin</Button>
       </nav>
       <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"}>
@@ -234,7 +235,7 @@ const SpeakingReel = () => {
                                                                    boxShadow: "0 0 40px rgba(255,102,196,0.5)" }}>
                                                          <Icon name="play" size={32} color="var(--ink)" />
                                         </div>
-                                        <span style={{ fontFamily: "var(--font-body)", fontWeight: 800, fontSize: 15, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--white)" }}>Watch the reel</span>span>
+                                        <span style={{ fontFamily: "var(--font-body)", fontWeight: 800, fontSize: 15, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--white)" }}>Watch the reel</span>
                          </button>
                        )}
                      </div>
