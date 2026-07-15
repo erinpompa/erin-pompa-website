@@ -11,7 +11,7 @@ const HOME = "index.html";
 const openUrl = (url) => () => window.open(url, "_blank", "noopener");
 
 /* ---------- NAV ---------- */
-const ABOUT_LINKS = [{ label: "About", href: "About.html" }, { label: "Speaking", href: "Speaking.html" }, { label: "Coaching", href: "coaching.html" }, { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" }, { label: "Contact", href: "Contact.html" }];
+const ABOUT_LINKS = [{ label: "About", href: "about.html" }, { label: "Speaking", href: "speaking.html" }, { label: "Coaching", href: "coaching.html" }, { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" }, { label: "Contact", href: "contact.html" }];
 const AboutNav = () => {
   const [scrolled, setScrolled] = React.useState(false);
   const [menuOpen, setMenuOpen] = React.useState(false);
