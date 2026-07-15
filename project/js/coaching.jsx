@@ -9,78 +9,159 @@ const HOME = "index.html";
 const openUrl = (url) => () => window.open(url, "_blank", "noopener");
 
 /* ---------- NAV ---------- */
-const COACHING_LINKS = [
-{ label: "About", href: "about.html" },
-{ label: "Speaking", href: "speaking.html" },
-{ label: "Coaching", href: "coaching.html" },
-{ label: "TruthSpeaks 365", href: "https://truthspeaks365.com" },
-{ label: "Contact", href: "contact.html" },
+const COACHING_ITEMS = [
+  { label: "About", href: "about.html" },
+  { label: "Speaking", sub: [
+    { label: "For Youth", href: "speaking.html" },
+    { label: "For Educators & Adults", href: "speaking.html#adults" },
+  ]},
+  { label: "Coaching", sub: [
+    { label: "Own Your Stage", href: "coaching.html" },
+    { label: "Digital Downloads", href: "coaching.html#downloads" },
+  ]},
+  { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" },
+  { label: "Contact", href: "contact.html" },
 ];
 const CoachingNav = () => {
-const [scrolled, setScrolled] = React.useState(false);
-const [menuOpen, setMenuOpen] = React.useState(false);
-React.useEffect(() => {
-const h = () => setScrolled(window.scrollY > 24);
-window.addEventListener("scroll", h); return () => window.removeEventListener("scroll", h);
-}, []);
-React.useEffect(() => {
-document.body.style.overflow = menuOpen ? "hidden" : "";
-return () => { document.body.style.overflow = ""; };
-}, [menuOpen]);
-return (
-<>
-<header style={{
-position: "fixed", top: 0, left: 0, right: 0, zIndex: 80,
-display: "flex", alignItems: "center", justifyContent: "space-between",
-padding: scrolled ? "12px 40px" : "20px 40px",
-background: (scrolled || menuOpen) ? "rgba(15,13,12,0.95)" : "transparent",
-backdropFilter: (scrolled || menuOpen) ? "blur(12px)" : "none",
-borderBottom: (scrolled || menuOpen) ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
-transition: "all .25s cubic-bezier(.2,.8,.2,1)"
-}}>
-<a href={HOME} style={{ display: "flex", alignItems: "center", gap: 11, textDecoration: "none" }}>
-<div style={{ fontFamily: "var(--font-display)", fontWeight: 900, textTransform: "uppercase",
-letterSpacing: "-0.03em", fontSize: 20, color: "var(--white)", lineHeight: 1 }}>
-Erin <span style={{ color: "var(--pink)" }}>Pompa</span>
-</div>
-</a>
-<nav className="nav-links" style={{ display: "flex", alignItems: "center", gap: 30 }}>
-{COACHING_LINKS.map(l => (
-<a key={l.label} href={l.href}
-target={l.href.startsWith("http") ? "_blank" : undefined} rel="noopener"
-aria-current={l.label === "Coaching" ? "page" : undefined}
-style={{
-fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em",
-color: l.label === "Coaching" ? "var(--lime)" : "rgba(255,255,255,0.82)",
-cursor: "pointer", whiteSpace: "nowrap"
-}}>{l.label}</a>
-))}
-<Button variant="pink" shape="cutout" size="sm" onClick={openUrl(CAL_URL)}>Book Erin</Button>
-</nav>
-<button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"}>
-<Icon name={menuOpen ? "x" : "menu"} size={26} color="var(--white)" />
-</button>
-</header>
-{menuOpen && (
-<div className="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
-{COACHING_LINKS.map(l => (
-<a key={l.label} href={l.href}
-target={l.href.startsWith("http") ? "_blank" : undefined} rel="noopener"
-aria-current={l.label === "Coaching" ? "page" : undefined}
-className={"mobile-menu-link" + (l.label === "Coaching" ? " active" : "")}
-onClick={() => setMenuOpen(false)}
->{l.label}</a>
-))}
-<div style={{ marginTop: 36, paddingTop: 8 }}>
-<Button variant="pink" shape="cutout" size="lg"
-onClick={() => { window.open(CAL_URL, "_blank", "noopener"); setMenuOpen(false); }}>
-Book Erin
-</Button>
-</div>
-</div>
-)}
-</>
-);
+  const [scrolled, setScrolled] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [openDd, setOpenDd] = React.useState(null);
+  const [mobileExp, setMobileExp] = React.useState(null);
+  React.useEffect(() => {
+    const h = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", h); return () => window.removeEventListener("scroll", h);
+  }, []);
+  React.useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+  React.useEffect(() => {
+    if (!openDd) return;
+    const close = (e) => { if (!e.target.closest('[data-dd]')) setOpenDd(null); };
+    document.addEventListener('mousedown', close);
+    return () => document.removeEventListener('mousedown', close);
+  }, [openDd]);
+  return (
+    <>
+      <header style={{
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 80,
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        padding: scrolled ? "12px 40px" : "20px 40px",
+        background: (scrolled || menuOpen) ? "rgba(15,13,12,0.95)" : "transparent",
+        backdropFilter: (scrolled || menuOpen) ? "blur(12px)" : "none",
+        borderBottom: (scrolled || menuOpen) ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
+        transition: "all .25s cubic-bezier(.2,.8,.2,1)"
+      }}>
+        <a href={HOME} style={{ display: "flex", alignItems: "center", gap: 11, textDecoration: "none" }}>
+          <div style={{ fontFamily: "var(--font-display)", fontWeight: 900, textTransform: "uppercase",
+            letterSpacing: "-0.03em", fontSize: 20, color: "var(--white)", lineHeight: 1 }}>
+            Erin <span style={{ color: "var(--pink)" }}>Pompa</span>
+          </div>
+        </a>
+        <nav className="nav-links" style={{ display: "flex", alignItems: "center", gap: 30 }}>
+          {COACHING_ITEMS.map(item => {
+            if (item.sub) {
+              const isCurrent = item.label === "Coaching";
+              const isOpen = openDd === item.label;
+              return (
+                <div key={item.label} data-dd style={{ position: "relative" }}>
+                  <button onClick={() => setOpenDd(isOpen ? null : item.label)} style={{
+                    fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em",
+                    color: isCurrent ? "var(--lime)" : "rgba(255,255,255,0.82)", background: "none", border: "none", cursor: "pointer",
+                    display: "flex", alignItems: "center", gap: 5, padding: 0, whiteSpace: "nowrap"
+                  }}>
+                    {item.label}
+                    <svg width="11" height="7" viewBox="0 0 11 7" fill="none" style={{ transition: "transform .2s", transform: isOpen ? "rotate(180deg)" : "none" }}>
+                      <path d="M1 1l4.5 4.5L10 1" stroke={isCurrent ? "var(--lime)" : "rgba(255,255,255,0.55)"} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                  {isOpen && (
+                    <div style={{
+                      position: "absolute", top: "calc(100% + 14px)", left: "50%", transform: "translateX(-50%)",
+                      background: "rgba(15,13,12,0.97)", border: "1px solid rgba(255,255,255,0.13)",
+                      borderRadius: 10, padding: "6px 0", minWidth: 230, zIndex: 200,
+                      boxShadow: "0 12px 32px rgba(0,0,0,0.5)"
+                    }}>
+                      {item.sub.map(s => (
+                        <a key={s.label} href={s.href} style={{
+                          display: "block", padding: "11px 20px",
+                          fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14,
+                          color: "rgba(255,255,255,0.85)", textDecoration: "none",
+                          borderLeft: "3px solid transparent", transition: "color .15s, padding-left .15s"
+                        }}
+                        onMouseEnter={e => { e.currentTarget.style.color = "var(--lime)"; e.currentTarget.style.borderLeftColor = "var(--lime)"; e.currentTarget.style.paddingLeft = "26px"; }}
+                        onMouseLeave={e => { e.currentTarget.style.color = "rgba(255,255,255,0.85)"; e.currentTarget.style.borderLeftColor = "transparent"; e.currentTarget.style.paddingLeft = "20px"; }}>
+                          {s.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+            return (
+              <a key={item.label} href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener"
+                aria-current={item.label === "Coaching" ? "page" : undefined}
+                style={{
+                  fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em",
+                  color: "rgba(255,255,255,0.82)", cursor: "pointer", whiteSpace: "nowrap"
+                }}>{item.label}</a>
+            );
+          })}
+          <Button variant="pink" shape="cutout" size="sm" onClick={openUrl(CAL_URL)}>Book Erin</Button>
+        </nav>
+        <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"}>
+          <Icon name={menuOpen ? "x" : "menu"} size={26} color="var(--white)" />
+        </button>
+      </header>
+      {menuOpen && (
+        <div className="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+          {COACHING_ITEMS.map(item => {
+            if (item.sub) {
+              const isExp = mobileExp === item.label;
+              return (
+                <div key={item.label}>
+                  <button onClick={() => setMobileExp(isExp ? null : item.label)} style={{
+                    fontFamily: "var(--font-body)", fontWeight: 800, fontSize: 26, letterSpacing: "-0.01em",
+                    color: item.label === "Coaching" ? "var(--lime)" : "var(--white)", background: "none", border: "none", cursor: "pointer",
+                    display: "flex", alignItems: "center", justifyContent: "space-between",
+                    width: "100%", padding: "0", textAlign: "left"
+                  }} className={"mobile-menu-link" + (item.label === "Coaching" ? " active" : "")}>
+                    <span>{item.label}</span>
+                    <svg width="14" height="9" viewBox="0 0 14 9" fill="none" style={{ transition: "transform .2s", transform: isExp ? "rotate(180deg)" : "none", flexShrink: 0 }}>
+                      <path d="M1 1l6 6 6-6" stroke="rgba(255,255,255,0.6)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                  {isExp && item.sub.map(s => (
+                    <a key={s.label} href={s.href} className="mobile-menu-link"
+                      onClick={() => setMenuOpen(false)}
+                      style={{ fontSize: 20, color: "rgba(255,255,255,0.72)", paddingLeft: 20 }}>
+                      {s.label}
+                    </a>
+                  ))}
+                </div>
+              );
+            }
+            return (
+              <a key={item.label} href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener"
+                aria-current={item.label === "Coaching" ? "page" : undefined}
+                className={"mobile-menu-link" + (item.label === "Coaching" ? " active" : "")}
+                onClick={() => setMenuOpen(false)}
+              >{item.label}</a>
+            );
+          })}
+          <div style={{ marginTop: 36, paddingTop: 8 }}>
+            <Button variant="pink" shape="cutout" size="lg"
+              onClick={() => { window.open(CAL_URL, "_blank", "noopener"); setMenuOpen(false); }}>
+              Book Erin
+            </Button>
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 /* ---------- HERO ---------- */
@@ -113,27 +194,18 @@ of professional speakers are men. We're changing who's at the front of the room.
 const TABS = ["Public Speaking Coaching", "Digital Downloads"];
 
 const CoachingTabs = () => {
-const [active, setActive] = React.useState(0);
-return (
-<section className="section" style={{ background: "var(--white)", color: "var(--ink)" }}>
-<div className="wrap">
-{/* Tab bar */}
-<div style={{ display: "flex", gap: 0, borderBottom: "3px solid var(--ink)", marginBottom: 56 }}>
-{TABS.map((t, i) => (
-<button key={t} onClick={() => setActive(i)} style={{
-fontFamily: "var(--font-body)", fontWeight: 800,
-fontSize: "clamp(15px, 1.8vw, 19px)",
-letterSpacing: "0.01em", padding: "18px 36px", border: "none", cursor: "pointer",
-background: "transparent",
-color: active === i ? "var(--ink)" : "rgba(15,13,12,0.38)",
-borderBottom: active === i ? "3px solid var(--pink)" : "3px solid transparent",
-marginBottom: -3,
-transition: "all .18s ease"
-}}>{t}</button>
-))}
-</div>
+  const getTab = () => (typeof window !== "undefined" && window.location.hash === "#downloads") ? 1 : 0;
+  const [active, setActive] = React.useState(getTab);
+  React.useEffect(() => {
+    const onHash = () => setActive(getTab());
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+  return (
+    <section className="section" style={{ background: "var(--white)", color: "var(--ink)" }}>
+      <div className="wrap">
 
-{/* Tab 1: Coaching */}
+        {/* Tab 1: Coaching */}
 {active === 0 && (
 <div>
   {/* HEADLINE */}
