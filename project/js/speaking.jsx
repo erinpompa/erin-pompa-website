@@ -9,16 +9,24 @@ const HOME = "index.html";
 const openUrl = (url) => () => window.open(url, "_blank", "noopener");
 
 /* ---------- NAV ---------- */
-const NAV_LINKS = [
+const SPEAKING_ITEMS = [
   { label: "About", href: "about.html" },
-  { label: "Speaking", href: "speaking.html" },
-  { label: "Coaching", href: "coaching.html" },
+  { label: "Speaking", sub: [
+    { label: "For Youth", href: "speaking.html" },
+    { label: "For Educators & Adults", href: "speaking.html#adults" },
+  ]},
+  { label: "Coaching", sub: [
+    { label: "Own Your Stage", href: "coaching.html" },
+    { label: "Digital Downloads", href: "coaching.html#downloads" },
+  ]},
   { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" },
   { label: "Contact", href: "contact.html" },
 ];
 const SpeakingNav = () => {
   const [scrolled, setScrolled] = React.useState(false);
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const [openDd, setOpenDd] = React.useState(null);
+  const [mobileExp, setMobileExp] = React.useState(null);
   React.useEffect(() => {
     const h = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", h); return () => window.removeEventListener("scroll", h);
@@ -27,6 +35,12 @@ const SpeakingNav = () => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
+  React.useEffect(() => {
+    if (!openDd) return;
+    const close = (e) => { if (!e.target.closest('[data-dd]')) setOpenDd(null); };
+    document.addEventListener('mousedown', close);
+    return () => document.removeEventListener('mousedown', close);
+  }, [openDd]);
   return (
     <>
     <header style={{
@@ -45,11 +59,53 @@ const SpeakingNav = () => {
         </div>
       </a>
       <nav className="nav-links" style={{ display: "flex", alignItems: "center", gap: 30 }}>
-        <a href="about.html" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>About</a>
-        <a href="coaching.html" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>Coaching</a>
-        <a href="speaking.html" aria-current="page" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "var(--lime)", whiteSpace: "nowrap" }}>Speaking</a>
-        <a href="https://truthspeaks365.com" target="_blank" rel="noopener" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>TruthSpeaks 365</a>
-        <a href="contact.html" style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>Contact</a>
+        {SPEAKING_ITEMS.map(item => {
+          if (item.sub) {
+            const isCurrent = item.label === "Speaking";
+            const isOpen = openDd === item.label;
+            return (
+              <div key={item.label} data-dd style={{ position: "relative" }}>
+                <button onClick={() => setOpenDd(isOpen ? null : item.label)} style={{
+                  fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em",
+                  color: isCurrent ? "var(--lime)" : "rgba(255,255,255,0.82)", background: "none", border: "none", cursor: "pointer",
+                  display: "flex", alignItems: "center", gap: 5, padding: 0, whiteSpace: "nowrap"
+                }}>
+                  {item.label}
+                  <svg width="11" height="7" viewBox="0 0 11 7" fill="none" style={{ transition: "transform .2s", transform: isOpen ? "rotate(180deg)" : "none" }}>
+                    <path d="M1 1l4.5 4.5L10 1" stroke={isCurrent ? "var(--lime)" : "rgba(255,255,255,0.55)"} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+                {isOpen && (
+                  <div style={{
+                    position: "absolute", top: "calc(100% + 14px)", left: "50%", transform: "translateX(-50%)",
+                    background: "rgba(15,13,12,0.97)", border: "1px solid rgba(255,255,255,0.13)",
+                    borderRadius: 10, padding: "6px 0", minWidth: 230, zIndex: 200,
+                    boxShadow: "0 12px 32px rgba(0,0,0,0.5)"
+                  }}>
+                    {item.sub.map(s => (
+                      <a key={s.label} href={s.href} style={{
+                        display: "block", padding: "11px 20px",
+                        fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14,
+                        color: "rgba(255,255,255,0.85)", textDecoration: "none",
+                        borderLeft: "3px solid transparent", transition: "color .15s, padding-left .15s"
+                      }}
+                      onMouseEnter={e => { e.currentTarget.style.color = "var(--lime)"; e.currentTarget.style.borderLeftColor = "var(--lime)"; e.currentTarget.style.paddingLeft = "26px"; }}
+                      onMouseLeave={e => { e.currentTarget.style.color = "rgba(255,255,255,0.85)"; e.currentTarget.style.borderLeftColor = "transparent"; e.currentTarget.style.paddingLeft = "20px"; }}>
+                        {s.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          }
+          return (
+            <a key={item.label} href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener" style={{
+              fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em",
+              color: "rgba(255,255,255,0.82)", cursor: "pointer", whiteSpace: "nowrap"
+            }}>{item.label}</a>
+          );
+        })}
         <Button variant="pink" shape="cutout" size="sm" onClick={openUrl(CAL_URL)}>Book Erin</Button>
       </nav>
       <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? "Close menu" : "Open menu"}>
@@ -58,16 +114,41 @@ const SpeakingNav = () => {
     </header>
     {menuOpen && (
       <div className="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
-        {NAV_LINKS.map(l => (
-          <a key={l.label} href={l.href}
-            target={l.href.startsWith("http") ? "_blank" : undefined}
-            rel="noopener"
-            aria-current={l.label === "Speaking" ? "page" : undefined}
-            className={"mobile-menu-link" + (l.label === "Speaking" ? " active" : "")}
-            onClick={() => setMenuOpen(false)}>
-            {l.label}
-          </a>
-        ))}
+        {SPEAKING_ITEMS.map(item => {
+          if (item.sub) {
+            const isExp = mobileExp === item.label;
+            return (
+              <div key={item.label}>
+                <button onClick={() => setMobileExp(isExp ? null : item.label)} style={{
+                  fontFamily: "var(--font-body)", fontWeight: 800, fontSize: 26, letterSpacing: "-0.01em",
+                  color: item.label === "Speaking" ? "var(--lime)" : "var(--white)", background: "none", border: "none", cursor: "pointer",
+                  display: "flex", alignItems: "center", justifyContent: "space-between",
+                  width: "100%", padding: "0", textAlign: "left"
+                }} className={"mobile-menu-link" + (item.label === "Speaking" ? " active" : "")}>
+                  <span>{item.label}</span>
+                  <svg width="14" height="9" viewBox="0 0 14 9" fill="none" style={{ transition: "transform .2s", transform: isExp ? "rotate(180deg)" : "none", flexShrink: 0 }}>
+                    <path d="M1 1l6 6 6-6" stroke="rgba(255,255,255,0.6)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+                {isExp && item.sub.map(s => (
+                  <a key={s.label} href={s.href} className="mobile-menu-link"
+                    onClick={() => setMenuOpen(false)}
+                    style={{ fontSize: 20, color: "rgba(255,255,255,0.72)", paddingLeft: 20 }}>
+                    {s.label}
+                  </a>
+                ))}
+              </div>
+            );
+          }
+          return (
+            <a key={item.label} href={item.href}
+              target={item.href.startsWith("http") ? "_blank" : undefined}
+              rel="noopener"
+              className="mobile-menu-link"
+              onClick={() => setMenuOpen(false)}
+            >{item.label}</a>
+          );
+        })}
         <div style={{ marginTop: 32 }}>
           <Button variant="pink" shape="cutout" size="lg" onClick={() => { window.open(CAL_URL, "_blank", "noopener"); setMenuOpen(false); }}>Book Erin</Button>
         </div>
@@ -281,8 +362,13 @@ const AudienceView = ({ data }) => (
 
 /* ---------- TABS + CONTENT ---------- */
 const SpeakingBody = () => {
-  const initialTab = (typeof window !== "undefined" && window.location.hash.replace("#", "") === "adults") ? "adults" : "youth";
-  const [tab, setTab] = React.useState(initialTab);
+  const getTab = () => (typeof window !== "undefined" && window.location.hash.replace("#", "") === "adults") ? "adults" : "youth";
+  const [tab, setTab] = React.useState(getTab);
+  React.useEffect(() => {
+    const onHash = () => setTab(getTab());
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
   const data = AUDIENCES[tab];
   React.useEffect(() => {
     const id = setTimeout(() => window.lucide && window.lucide.createIcons(), 60);
@@ -290,32 +376,7 @@ const SpeakingBody = () => {
   }, [tab]);
   return (
     <section className="section" style={{ background: "var(--ink)", color: "var(--white)", paddingTop: 56 }}>
-      <div style={{ borderBottom: "3px solid rgba(255,255,255,0.15)", marginBottom: 48 }}>
-        <div role="tablist" aria-label="Select audience" style={{ display: "flex", borderBottom: "3px solid rgba(255,255,255,0.15)", gap: 0, marginBottom: 0 }}>
-          {Object.values(AUDIENCES).map(a => {
-            const active = a.key === tab;
-            return (
-              <button key={a.key} role="tab" aria-selected={active} aria-controls={"tabpanel-" + a.key} id={"tab-" + a.key}
-                onClick={() => setTab(a.key)}
-                style={{
-                  fontFamily: "var(--font-body)", fontWeight: 800,
-                  fontSize: "clamp(15px, 1.8vw, 19px)", letterSpacing: "0.01em",
-                  padding: "18px 36px", border: "none", cursor: "pointer", whiteSpace: "nowrap",
-                  background: "transparent",
-                  color: active ? "var(--lime)" : "rgba(255,255,255,0.5)",
-                  borderBottom: active ? "3px solid var(--lime)" : "3px solid transparent",
-                  marginBottom: -3,
-                  transition: "all .18s ease"
-                }}>
-                {a.tab}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-      <div role="tabpanel" id={"tabpanel-" + tab} aria-labelledby={"tab-" + tab}>
-        <AudienceView key={tab} data={data} />
-      </div>
+      <AudienceView key={tab} data={data} />
     </section>
   );
 };
