@@ -118,17 +118,17 @@ return (
 <section className="section" style={{ background: "var(--white)", color: "var(--ink)" }}>
 <div className="wrap">
 {/* Tab bar */}
-<div style={{ display: "flex", gap: 0, borderBottom: "2.5px solid var(--ink)", marginBottom: 56 }}>
+<div style={{ display: "flex", gap: 0, borderBottom: "3px solid var(--ink)", marginBottom: 56 }}>
 {TABS.map((t, i) => (
 <button key={t} onClick={() => setActive(i)} style={{
-fontFamily: "var(--font-body)", fontWeight: 800, fontSize: "clamp(14px, 1.6vw, 17px)",
-letterSpacing: "0.02em", padding: "14px 28px", border: "none", cursor: "pointer",
-background: active === i ? "var(--ink)" : "transparent",
-color: active === i ? "var(--white)" : "var(--ink-500)",
-borderTopLeftRadius: 8, borderTopRightRadius: 8,
-transition: "all .18s ease",
-borderBottom: active === i ? "2.5px solid var(--ink)" : "2.5px solid transparent",
-marginBottom: -2.5
+fontFamily: "var(--font-body)", fontWeight: 800,
+fontSize: "clamp(15px, 1.8vw, 19px)",
+letterSpacing: "0.01em", padding: "18px 36px", border: "none", cursor: "pointer",
+background: "transparent",
+color: active === i ? "var(--ink)" : "rgba(15,13,12,0.38)",
+borderBottom: active === i ? "3px solid var(--pink)" : "3px solid transparent",
+marginBottom: -3,
+transition: "all .18s ease"
 }}>{t}</button>
 ))}
 </div>
