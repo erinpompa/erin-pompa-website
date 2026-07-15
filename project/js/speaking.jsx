@@ -290,17 +290,23 @@ const SpeakingBody = () => {
   }, [tab]);
   return (
     <section className="section" style={{ background: "var(--ink)", color: "var(--white)", paddingTop: 56 }}>
-      <div className="wrap" style={{ marginBottom: 48 }}>
-        <div role="tablist" aria-label="Select audience" style={{ display: "inline-flex", flexWrap: "wrap", gap: 6, background: "rgba(255,255,255,0.06)", border: "2px solid rgba(255,255,255,0.18)", borderRadius: 999, padding: 6 }}>
+      <div style={{ borderBottom: "3px solid rgba(255,255,255,0.15)", marginBottom: 48 }}>
+        <div role="tablist" aria-label="Select audience" style={{ display: "flex", borderBottom: "3px solid rgba(255,255,255,0.15)", gap: 0, marginBottom: 0 }}>
           {Object.values(AUDIENCES).map(a => {
             const active = a.key === tab;
             return (
               <button key={a.key} role="tab" aria-selected={active} aria-controls={"tabpanel-" + a.key} id={"tab-" + a.key}
                 onClick={() => setTab(a.key)}
-                style={{ fontFamily: "var(--font-body)", fontWeight: 800, fontSize: 15, letterSpacing: "0.02em",
-                  padding: "12px 26px", borderRadius: 999, border: "none", cursor: "pointer", whiteSpace: "nowrap",
-                  background: active ? "var(--lime)" : "transparent", color: active ? "var(--ink)" : "rgba(255,255,255,0.7)",
-                  transition: "all .16s cubic-bezier(.2,.8,.2,1)" }}>
+                style={{
+                  fontFamily: "var(--font-body)", fontWeight: 800,
+                  fontSize: "clamp(15px, 1.8vw, 19px)", letterSpacing: "0.01em",
+                  padding: "18px 36px", border: "none", cursor: "pointer", whiteSpace: "nowrap",
+                  background: "transparent",
+                  color: active ? "var(--lime)" : "rgba(255,255,255,0.5)",
+                  borderBottom: active ? "3px solid var(--lime)" : "3px solid transparent",
+                  marginBottom: -3,
+                  transition: "all .18s ease"
+                }}>
                 {a.tab}
               </button>
             );
