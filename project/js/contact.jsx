@@ -221,7 +221,7 @@ const REASONS = [
 { key: "youth", color: "var(--sky)", icon: "🎤", title: "Youth Talk", desc: "Book a presentation for schools, student leadership, anything involving our youth.", href: CAL_URL, formTitle: "Booking Inquiry", events: ["Student Leadership Conference", "School Assembly", "Adult Presentation"] },
 { key: "adults", color: "var(--pink)", icon: "🏫", title: "Adult Presentation", desc: "Book staff development days and conferences.", href: CAL_URL, formTitle: "Booking Inquiry", events: ["Student Leadership Conference", "School Assembly", "Adult Presentation"] },
 { key: "book", color: "var(--violet)", icon: "📖", title: "Book Coming Soon", desc: "My book is dropping in 2027 and you do not want to miss it. Click below to be a part of the journey.", href: BOOK_URL, formTitle: "Be the First to Know", events: ["Book launch list", "Other"] },
-{ key: "connect", color: "var(--lime)", icon: "🤎", title: "Just Connect", desc: "Just want to say hello? Send me a DM on Instagram.", href: "https://www.instagram.com/erinpspeaks/", formTitle: "Say Hello", events: ["General Question", "Collaboration", "Other"] },
+{ key: "connect", color: "var(--lime)", icon: "🤎", title: "Just Connect", desc: "Just want to say hello? Send me a DM on Instagram.", href: "https://www.instagram.com/theerinpompa/", formTitle: "Say Hello", events: ["General Question", "Collaboration", "Other"] },
 ];
 
 const ReasonCard = ({ r, active, onClick }) => {
@@ -326,7 +326,7 @@ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap
 </Reveal>
 <Reveal delay={2}>
 <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-{[{ l: "Instagram", n: "instagram", bg: "var(--pink)", fg: "var(--white)", h: "https://www.instagram.com/erinpspeaks/" },
+{[{ l: "Instagram", n: "instagram", bg: "var(--pink)", fg: "var(--white)", h: "https://www.instagram.com/theerinpompa/" },
 { l: "Facebook", n: "facebook", bg: "#1877f2", fg: "var(--white)", h: "https://www.facebook.com/erinpspeaks" },
 { l: "LinkedIn", n: "linkedin", bg: "var(--sky)", fg: "var(--ink)", h: "https://www.linkedin.com/in/erinpompa/" },
 { l: "YouTube", n: "youtube", bg: "var(--violet)", fg: "var(--white)", h: "https://www.youtube.com/@ErinPompa-gg3ds" }].map(s => (
@@ -373,7 +373,7 @@ Erin <span style={{ color: "var(--pink)" }}>Pompa</span>
 <div style={{ fontFamily: "var(--font-script)", fontWeight: 600, fontSize: 23, color: "var(--lime)", marginTop: 2 }}>the shift starts here.</div>
 </a>
 <div style={{ display: "flex", gap: 12 }}>
-{[{ n: "instagram", h: "https://www.instagram.com/erinpspeaks/", l: "Instagram" }, { n: "facebook", h: "https://www.facebook.com/erinpspeaks", l: "Facebook" }, { n: "linkedin", h: "https://www.linkedin.com/in/erinpompa/", l: "LinkedIn" }, { n: "youtube", h: "https://www.youtube.com/@ErinPompa-gg3ds", l: "YouTube" }].map(s => (
+{[{ n: "instagram", h: "https://www.instagram.com/theerinpompa/", l: "Instagram" }, { n: "facebook", h: "https://www.facebook.com/erinpspeaks", l: "Facebook" }, { n: "linkedin", h: "https://www.linkedin.com/in/erinpompa/", l: "LinkedIn" }, { n: "youtube", h: "https://www.youtube.com/@ErinPompa-gg3ds", l: "YouTube" }].map(s => (
 <a key={s.h} href={s.h} target="_blank" rel="noopener" aria-label={"Erin on " + s.l} style={{ width: 46, height: 46, borderRadius: 999, border: "1px solid rgba(255,255,255,0.25)", display: "grid", placeItems: "center", textDecoration: "none", color: "var(--white)" }}><SocialIcon name={s.n} size={19} /></a>
 ))}
 </div>
