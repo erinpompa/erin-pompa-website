@@ -32,7 +32,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 28px 20px 40px;
+      padding: 36px 20px 44px;
       position: relative;
       overflow-x: hidden;
     }
@@ -77,70 +77,29 @@
       align-items: center;
     }
 
-    /* Profile photo */
-    .avatar-wrap {
-      position: relative;
-      width: 90px;
-      height: 90px;
-      margin-bottom: 10px;
-    }
-    .avatar {
-      width: 90px;
-      height: 90px;
-      border-radius: 999px;
-      object-fit: cover;
-      object-position: center top;
-      border: 2.5px solid rgba(255,255,255,0.25);
-    }
-    .seen-badge {
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--lime);
-      color: var(--ink);
-      font-family: 'Hanken Grotesk', system-ui, sans-serif;
-      font-weight: 800;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 3px 8px;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-
-    .name {
-      font-family: 'Archivo', system-ui, sans-serif;
-      font-weight: 900;
-      font-size: clamp(54px, 17vw, 76px);
-      line-height: 0.86;
-      text-transform: uppercase;
-      letter-spacing: -0.045em;
-      color: #fff;
-      margin-top: 16px;
-      margin-bottom: 12px;
-    }
-
-    .bio-block {
+    /* Bio header */
+    .bio-header {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
-      margin-bottom: 10px;
+      gap: 5px;
+      margin-bottom: 28px;
     }
-    .bio-life {
-      font-family: 'Caveat', cursive;
-      font-weight: 700;
-      font-size: 22px;
-      color: var(--lime);
+    .bio-name {
+      font-family: 'Archivo', system-ui, sans-serif;
+      font-weight: 900;
+      font-size: clamp(28px, 8vw, 36px);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: #fff;
       line-height: 1;
     }
-    .bio-title {
+    .bio-roles {
       font-family: 'Archivo', system-ui, sans-serif;
       font-weight: 800;
       font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       color: #fff;
     }
     .bio-vibes {
@@ -149,23 +108,6 @@
       font-size: 12px;
       letter-spacing: 0.04em;
       color: rgba(255,255,255,0.6);
-    }
-
-    .intro {
-      font-size: 15px;
-      font-weight: 500;
-      line-height: 1.5;
-      color: rgba(255,255,255,0.88);
-      margin-bottom: 22px;
-    }
-    .script {
-      font-family: 'Caveat', cursive;
-      font-weight: 700;
-      font-size: 1.6em;
-      line-height: 0.9;
-      color: var(--lime);
-      display: inline-block;
-      vertical-align: -0.12em;
     }
 
     .links {
@@ -210,9 +152,9 @@
       font-family: 'Hanken Grotesk', system-ui, sans-serif;
       font-weight: 700;
       font-size: 11px;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
       margin-top: 5px;
-      opacity: 0.7;
+      opacity: 0.72;
     }
 
     .socials {
@@ -259,22 +201,11 @@
 
   <div class="container">
 
-    <div class="avatar-wrap">
-      <img class="avatar" src="uploads/7Q5A9814.webp" alt="Erin Pompa" />
-      <span class="seen-badge">As seen on social media</span>
-    </div>
-
-    <h1 class="name">Erin<br>Pompa</h1>
-
-    <div class="bio-block">
-      <p class="bio-life">✨ Living my best life at 45</p>
-      <p class="bio-title">🎤 Public Speaker | Wife | Dog Mom</p>
+    <div class="bio-header">
+      <p class="bio-name">Erin Pompa</p>
+      <p class="bio-roles">🎤 Public Speaker | Wife | Dog Mom</p>
       <p class="bio-vibes">Faith &bull; Fitness &bull; Fashion &bull; Real Life</p>
     </div>
-
-    <p class="intro">
-      Hi, I'm Erin &mdash; and I've got <span class="script">a lot to say.</span>
-    </p>
 
     <div class="links">
 
@@ -296,7 +227,7 @@
          href="https://erinpompa.com/coaching.html"
          target="_blank" rel="noopener">
         <span class="btn-label">TruthSpeaks 365</span>
-        <span class="btn-sub">Elevating women's voices on stages &rarr;</span>
+        <span class="btn-sub">Learn how we are elevating women's voices on stages &rarr;</span>
       </a>
 
       <a class="btn btn-cream"
