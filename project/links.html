@@ -15,6 +15,7 @@
       --lime: #c1f944;
       --sky:  #38b6ff;
       --ink:  #161413;
+      --cream: #fff8ee;
     }
 
     html, body {
@@ -31,7 +32,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 32px 20px 36px;
+      padding: 28px 20px 40px;
       position: relative;
       overflow-x: hidden;
     }
@@ -76,14 +77,47 @@
       align-items: center;
     }
 
+    /* Profile photo */
+    .avatar-wrap {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      margin-bottom: 10px;
+    }
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 999px;
+      object-fit: cover;
+      object-position: center top;
+      border: 2.5px solid rgba(255,255,255,0.25);
+    }
+    .seen-badge {
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--lime);
+      color: var(--ink);
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-weight: 800;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
     .name {
       font-family: 'Archivo', system-ui, sans-serif;
       font-weight: 900;
-      font-size: clamp(58px, 18vw, 80px);
+      font-size: clamp(54px, 17vw, 76px);
       line-height: 0.86;
       text-transform: uppercase;
       letter-spacing: -0.045em;
       color: #fff;
+      margin-top: 16px;
       margin-bottom: 12px;
     }
 
@@ -122,7 +156,7 @@
       font-weight: 500;
       line-height: 1.5;
       color: rgba(255,255,255,0.88);
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
     .script {
       font-family: 'Caveat', cursive;
@@ -148,7 +182,7 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      padding: 17px 20px 15px;
+      padding: 16px 20px 14px;
       border-radius: 8px;
       border: 2.5px solid var(--ink);
       text-decoration: none;
@@ -159,8 +193,10 @@
     .btn:hover  { transform: translateY(-2px); box-shadow: 6px 6px 0 rgba(22,20,19,0.9); }
     .btn:active { transform: translateY(1px);  box-shadow: 2px 2px 0 rgba(22,20,19,0.8); }
 
-    .btn-lime { background: var(--lime); color: var(--ink); }
-    .btn-pink { background: var(--pink); color: var(--ink); }
+    .btn-lime  { background: var(--lime);  color: var(--ink); }
+    .btn-pink  { background: var(--pink);  color: var(--ink); }
+    .btn-sky   { background: var(--sky);   color: var(--ink); }
+    .btn-cream { background: var(--cream); color: var(--ink); }
 
     .btn-label {
       font-family: 'Archivo', system-ui, sans-serif;
@@ -173,9 +209,8 @@
     .btn-sub {
       font-family: 'Hanken Grotesk', system-ui, sans-serif;
       font-weight: 700;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 0.04em;
-      text-transform: uppercase;
       margin-top: 5px;
       opacity: 0.7;
     }
@@ -224,6 +259,11 @@
 
   <div class="container">
 
+    <div class="avatar-wrap">
+      <img class="avatar" src="uploads/7Q5A9814.webp" alt="Erin Pompa" />
+      <span class="seen-badge">As seen on social media</span>
+    </div>
+
     <h1 class="name">Erin<br>Pompa</h1>
 
     <div class="bio-block">
@@ -248,7 +288,22 @@
       <a class="btn btn-pink"
          href="https://erinpompa.com/speaking.html"
          target="_blank" rel="noopener">
-        <span class="btn-label">Learn More About My Speaking &rarr;</span>
+        <span class="btn-label">Book Me to Speak &rarr;</span>
+        <span class="btn-sub">Learn more about my speaking</span>
+      </a>
+
+      <a class="btn btn-sky"
+         href="https://erinpompa.com/coaching.html"
+         target="_blank" rel="noopener">
+        <span class="btn-label">TruthSpeaks 365</span>
+        <span class="btn-sub">Elevating women's voices on stages &rarr;</span>
+      </a>
+
+      <a class="btn btn-cream"
+         href="https://stan.store/ErinPompa/p/get-booked-the-speaker-pipeline-kit"
+         target="_blank" rel="noopener">
+        <span class="btn-label">📥 Grab Your Pipeline Toolkit</span>
+        <span class="btn-sub">Start growing your speaking business &rarr;</span>
       </a>
 
     </div>
