@@ -16,6 +16,7 @@
       --sky:  #38b6ff;
       --ink:  #161413;
       --cream: #fff8ee;
+      --orange: #ff7a1a;
     }
 
     html, body {
@@ -91,7 +92,10 @@
       font-size: clamp(28px, 8vw, 36px);
       text-transform: uppercase;
       letter-spacing: -0.02em;
-      color: #fff;
+      background: linear-gradient(90deg, var(--lime) 0%, var(--pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       line-height: 1;
     }
     .bio-roles {
@@ -139,6 +143,7 @@
     .btn-pink  { background: var(--pink);  color: var(--ink); }
     .btn-sky   { background: var(--sky);   color: var(--ink); }
     .btn-cream { background: var(--cream); color: var(--ink); }
+    .btn-orange { background: var(--orange); color: #fff; }
 
     .btn-label {
       font-family: 'Archivo', system-ui, sans-serif;
@@ -230,7 +235,7 @@
         <span class="btn-sub">Learn how we are elevating women's voices on stages &rarr;</span>
       </a>
 
-      <a class="btn btn-cream"
+      <a class="btn btn-orange"
          href="https://stan.store/ErinPompa/p/get-booked-the-speaker-pipeline-kit"
          target="_blank" rel="noopener">
         <span class="btn-label">📥 Grab Your Pipeline Toolkit</span>
