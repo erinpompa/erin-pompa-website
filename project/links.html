@@ -85,28 +85,37 @@
       text-transform: uppercase;
       letter-spacing: -0.045em;
       color: #fff;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
-    .tagline {
+    .bio-block {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 5px;
+      margin-bottom: 22px;
     }
-    .tagline span {
+    .bio-life {
+      font-family: 'Caveat', cursive;
+      font-weight: 700;
+      font-size: 24px;
+      color: var(--lime);
+      line-height: 1;
+    }
+    .bio-title {
       font-family: 'Archivo', system-ui, sans-serif;
       font-weight: 800;
-      font-size: 15px;
+      font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       color: #fff;
     }
-    .slash {
-      color: var(--pink);
-      font-weight: 900;
-      font-size: 18px;
+    .bio-vibes {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.65);
     }
 
     .headline {
@@ -169,6 +178,11 @@
     .btn-pink { background: var(--pink); color: var(--ink); }
     .btn-lime { background: var(--lime); color: var(--ink); }
     .btn-sky  { background: var(--sky);  color: var(--ink); }
+    .btn-shop {
+      background: linear-gradient(135deg, #ff66c4 0%, #ffaa5c 100%);
+      color: var(--ink);
+      border-color: rgba(22,20,19,0.6);
+    }
 
     .btn-label {
       font-family: 'Archivo', system-ui, sans-serif;
@@ -177,6 +191,15 @@
       text-transform: uppercase;
       letter-spacing: 0.04em;
       line-height: 1;
+    }
+    .btn-sub {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 5px;
+      opacity: 0.7;
     }
 
     .book-top {
@@ -191,15 +214,16 @@
       font-family: 'Hanken Grotesk', system-ui, sans-serif;
       font-weight: 800;
       font-size: 13px;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       margin-top: 6px;
     }
 
     .socials {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       justify-content: center;
+      align-items: center;
     }
     .soc {
       width: 46px;
@@ -216,6 +240,27 @@
       border-color: #fff;
       background: rgba(255,255,255,0.1);
     }
+    .soc-handle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 12px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1.5px solid rgba(255,255,255,0.28);
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.01em;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+    }
+    .soc-handle:hover {
+      border-color: #fff;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -231,44 +276,52 @@
 
     <h1 class="name">Erin<br>Pompa</h1>
 
-    <div class="tagline">
-      <span>Speaker</span><span class="slash">/</span>
-      <span>Author</span><span class="slash">/</span>
-      <span>Educator</span>
+    <div class="bio-block">
+      <p class="bio-life">✨ Living my best life at 45</p>
+      <p class="bio-title">🎤 Public Speaker | Wife | Dog Mom</p>
+      <p class="bio-vibes">Faith &bull; Fitness &bull; Fashion &bull; Real Life</p>
     </div>
 
     <p class="headline">The <span class="hl">shift</span> starts here.</p>
 
     <p class="subtext">
-      I'll help you embrace the power of a <span class="script">perspective shift.</span>
+      45, thriving, and I've got <span class="script">a lot to say.</span>
     </p>
 
     <div class="links">
 
+      <a class="btn btn-shop"
+         href="https://shopmy.us/shop/erinpspeaks"
+         target="_blank" rel="noopener">
+        <span class="btn-label">🛍️ Shop My Faves ✨</span>
+        <span class="btn-sub">Erin-approved picks &rarr;</span>
+      </a>
+
       <a class="btn btn-pink"
          href="https://erinpompa.com"
          target="_blank" rel="noopener">
-        <span class="btn-label">Book Me to Speak &#8594;</span>
+        <span class="btn-label">Book Me to Speak &rarr;</span>
       </a>
 
       <a class="btn btn-lime"
          href="https://truthspeaks365.com"
          target="_blank" rel="noopener">
-        <span class="btn-label">Book a TruthSpeaks 365 Speaker &#8594;</span>
+        <span class="book-top">TruthSpeaks 365</span>
+        <span class="book-cta">My speaking agency that elevates women&rsquo;s voices &rarr;</span>
       </a>
 
       <a class="btn btn-sky"
          href="https://webforms.pipedrive.com/f/clTep0VNxXRyL9v4qQAQH1MknN1K5SsbuThJFHcYabdZNS63Ki18JRtYVXQpC4UtRF"
          target="_blank" rel="noopener">
         <span class="book-top">Book Coming 2027</span>
-        <span class="book-cta">Join the Crew &#8594;</span>
+        <span class="book-cta">Join the Crew &rarr;</span>
       </a>
 
       <a class="btn btn-lime"
          href="https://truthspeaks365.com/presenter"
          target="_blank" rel="noopener">
         <span class="book-top">Apply: TS365 Presenter</span>
-        <span class="book-cta">Deadline July 17, 2026 &#8594;</span>
+        <span class="book-cta">Deadline July 17, 2026 &rarr;</span>
       </a>
 
     </div>
@@ -281,22 +334,14 @@
           <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
         </svg>
       </a>
-      <a class="soc" href="https://www.facebook.com/erinpspeaks" target="_blank" rel="noopener" aria-label="Facebook">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-    </svg>
-  </a>
-  <a class="soc" href="https://www.linkedin.com/in/erinpompa/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <a class="soc-handle" href="https://www.instagram.com/theerinpompa/" target="_blank" rel="noopener">
+        @theerinpompa
+      </a>
+      <a class="soc" href="https://www.linkedin.com/in/erinpompa/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
           <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7H10V9h4v1.8A6 6 0 0 1 16 8z"/>
           <rect x="2" y="9" width="4" height="12"/>
           <circle cx="4" cy="4" r="2"/>
-        </svg>
-      </a>
-      <a class="soc" href="https://www.youtube.com/@ErinPompa-gg3ds" target="_blank" rel="noopener" aria-label="YouTube">
-        <svg width="22" height="16" viewBox="0 0 24 17" fill="currentColor">
-          <path d="M23.5 2.5a3 3 0 0 0-2.1-2.1C19.5 0 12 0 12 0S4.5 0 2.6.4A3 3 0 0 0 .5 2.5 31 31 0 0 0 0 8.5a31 31 0 0 0 .5 6 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 8.5a31 31 0 0 0-.5-6z"/>
-          <polygon points="9.75,12.5 15.5,8.5 9.75,4.5" fill="#161413"/>
         </svg>
       </a>
     </div>
