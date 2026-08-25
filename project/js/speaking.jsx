@@ -16,7 +16,6 @@ const SPEAKING_ITEMS = [
     { label: "For Educators & Adults", href: "speaking.html#adults" },
   ]},
   { label: "Coaching", sub: [
-    { label: "Own Your Stage", href: "coaching.html" },
     { label: "Digital Downloads", href: "coaching.html#downloads" },
   ]},
   { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" },

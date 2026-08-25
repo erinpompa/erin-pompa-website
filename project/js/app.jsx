@@ -23,7 +23,7 @@ const App = () => {
       <Schools />
       <BookTeaser />
       <BookCTA />
-      <Newsletter />
+
       <Footer />
     </div>
   );

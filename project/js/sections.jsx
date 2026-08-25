@@ -19,7 +19,7 @@ const NAV_ITEMS = [
     { label: "For Educators & Adults", href: "speaking.html#adults" },
   ]},
   // { label: "Coaching", sub: [
-  //   { label: "Own Your Stage", href: "coaching.html" },
+  //
   //   { label: "Digital Downloads", href: "coaching.html#downloads" },
   // ]},
   { label: "TruthSpeaks 365", href: "https://truthspeaks365.com" },
@@ -628,38 +628,6 @@ const Schools = () => (
   </section>
 );
 
-/* ---------- STAY IN THE ROOM (newsletter) ---------- */
-const NEWSLETTER_URL = "https://webforms.pipedrive.com/f/73Jq23GyM550x1HvCG3KMmddPksYnyYjlpDks1UPBY442WcNIYJxi2QkOTDe1XN8KD";
-const Newsletter = () => {
-  return (
-    <section className="section" style={{ background: "var(--pink)", color: "var(--ink)", paddingTop: 80, paddingBottom: 80,
-      borderTop: "2px solid var(--ink)", borderBottom: "2px solid var(--ink)" }}>
-      <div className="wrap grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
-        <div>
-          <Reveal><Kicker color="var(--ink)" slash="var(--white)" style={{ marginBottom: 16 }}>Stay in the room</Kicker></Reveal>
-          <Reveal delay={1}>
-            <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 900, textTransform: "uppercase",
-              letterSpacing: "-0.03em", fontSize: "clamp(34px, 5vw, 58px)", lineHeight: 0.92, margin: 0 }}>
-              Notes from the <span style={{ background: "var(--white)", padding: "0 0.1em", borderRadius: 4 }}>Front Row.</span>
-            </h2>
-          </Reveal>
-        </div>
-        <Reveal delay={2}>
-          <div>
-            <p style={{ fontSize: 18, lineHeight: 1.5, fontWeight: 600, margin: "0 0 18px", maxWidth: 440 }}>
-              Real talk for adults who refuse to stop growing. Reframe, reflect, and catch where I am next.
-            </p>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <Button variant="ink" shape="cutout" size="lg" color="var(--white)" onClick={openUrl(NEWSLETTER_URL)}>
-                Sign up now
-              </Button>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-};
 
 /* ---------- BOOK ERIN (CTA) ---------- */
 const BookCTA = () => (
@@ -712,4 +680,4 @@ const Footer = () => (
   </footer>
 );
 
-Object.assign(window, { Nav, Hero, Logos, Reel, Reviews, WhoSheServes, Banner, BookTeaser, Schools, Newsletter, BookCTA, Footer });
+Object.assign(window, { Nav, Hero, Logos, Reel, Reviews, WhoSheServes, Banner, BookTeaser, Schools, BookCTA, Footer });
